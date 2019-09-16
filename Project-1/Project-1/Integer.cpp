@@ -1,5 +1,45 @@
-//#include "Integer.h"
-//
+#include "Integer.h"
+
+void Integer::agregar(string numero) {
+	stack* pila = nullptr;
+	string auxiliar;
+	bool bandera = false;
+	if (!bandera) {
+		if (numero.at(0) == '-') {
+			signo = '-';
+			auxiliar = numero.substr(0, 1);
+
+		}
+		else {
+			signo = '+';
+		}
+		bandera = true;
+	}
+	for (int i = 0; i < numero.size(); i += 4) {
+		if (pila == nullptr) {
+			pila = new stack();
+		}
+		if (numero.size() - i < 4 && pila->isEmpty()) {
+			auxiliar = numero.substr(i, numero.size() - i);
+			pila->push(stoul(auxiliar));
+		}
+		else if (numero.size() - i < 4) {
+			auxiliar = numero.substr(i, numero.size() - i);
+			pila->push(stoul(auxiliar));
+			ListaStack->agregar(pila);
+		}
+		else {
+			auxiliar = numero.substr(i, 4);
+			pila->push(stoul(auxiliar));
+		}
+		if (pila->isEmpty()) {
+			ListaStack->agregar(pila);
+			pila = nullptr;
+		}
+	}
+
+}
+
 //// Constructores y Destructor
 //Integer::Integer()
 //{
