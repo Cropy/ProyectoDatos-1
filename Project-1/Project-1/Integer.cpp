@@ -29,6 +29,7 @@ void Integer::agregar(string numero) {
 			pila->push(stoul(auxiliar));
 		}
 		if (!pila->isFull()) {
+
 			if (numero.size() - i < 4) {
 				auxiliar = numero.substr(i, numero.size() - i);
 				pila->push(stoul(auxiliar));
@@ -38,9 +39,13 @@ void Integer::agregar(string numero) {
 				auxiliar = numero.substr(i, 4);
 				pila->push(stoul(auxiliar));
 			}
+			cout << "Agregando a pila " << endl;
 		}
 		
-		else {
+		if(pila->isFull())
+		{
+			cout << "Agregando a  nodo a Lista" << endl;
+
 			ListaStack->agregar(pila);
 			pila = nullptr;
 		}
