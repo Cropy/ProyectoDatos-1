@@ -21,6 +21,7 @@ public:
 	void setDatos(T* dato);
 	void print();
 	void setSiguiente(Nodo* siguiente);
+	unsigned int pop();
 };
 
 template <class T>
@@ -54,6 +55,12 @@ inline void Nodo<T>::print()
 template <class T>
 void Nodo<T>::setSiguiente(Nodo* siguiente) {
 	this->siguiente = siguiente;
+}
+
+template<class T>
+inline unsigned int Nodo<T>::pop()
+{
+	return this->datos->pop();
 }
 
 
