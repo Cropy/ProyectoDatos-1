@@ -125,12 +125,14 @@
   <ItemGroup>
     <ClInclude Include="Integer.h" />
     <ClInclude Include="Lista.h" />
+    <ClInclude Include="Nodo.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Utiles.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Integer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Stack.cpp" />
     <ClCompile Include="Utiles.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
