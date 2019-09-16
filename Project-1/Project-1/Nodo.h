@@ -15,12 +15,19 @@ private:
 	T* datos;
 	Nodo<T>* siguiente;
 public:
+	Nodo();
 	T* getDatos();
 	Nodo* getSiguiente();
 	void setDatos(T* dato);
 	void print();
 	void setSiguiente(Nodo* siguiente);
 };
+
+template <class T>
+Nodo<T>::Nodo() {
+	datos = nullptr;
+	siguiente = nullptr;
+}
 
 template <class T>
 T* Nodo<T>::getDatos() {

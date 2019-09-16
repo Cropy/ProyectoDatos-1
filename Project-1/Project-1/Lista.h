@@ -13,8 +13,8 @@
 using namespace std;
 
 template <class T> class Lista;
-template <class T>
 
+template <class T>
 class Lista {
 private:
 	Nodo<T>* inicio;
@@ -38,7 +38,7 @@ Lista<T>::Lista() {
 
 template <class T>
 void Lista<T>::agregar(T* dato) {
-	Nodo<T>* nuevo = new Nodo<T>;
+	Nodo<T>* nuevo = new Nodo<T>();
 	nuevo->setDatos(dato);
 	nuevo->setSiguiente(nullptr);
 	if (inicio == nullptr) {

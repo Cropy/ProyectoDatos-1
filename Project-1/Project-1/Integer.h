@@ -23,7 +23,6 @@ public:
 	Integer() {
 		ListaStack = new Lista<stack>();
 		signo = ' ';
-	
 	}
 	Integer(const Integer&);
 	Integer(const long long&);
@@ -35,6 +34,9 @@ public:
 	char get_signo();
 	void set_numero(string);
 	void set_signo(char);
+
+	//Metodos
+	void agregar(string numero);
 
 	// Sobrecarga operadores asignacion
 	Integer& operator =(const Integer&);
