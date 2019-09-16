@@ -13,16 +13,16 @@ using namespace std;
 // Class for stack
 class stack
 {
-	int* arr;
+	unsigned int* arr;
 	int top;
 	int capacity;
 
 public:
 	stack(int size = SIZE);		// constructor
 
-	void push(int);
-	int pop();
-	int peek();
+	void push(unsigned int);
+	unsigned pop();
+	unsigned peek();
 
 	int size();
 	bool isEmpty();
@@ -32,13 +32,13 @@ public:
 // Constructor to initialize stack
 stack::stack(int size)
 {
-	arr = new int[size];
+	arr = new unsigned int[size];
 	capacity = size;
 	top = -1;
 }
 
 // Utility function to add an element x in the stack
-void stack::push(int x)
+void stack::push(unsigned int x)
 {
 	if (isFull())
 	{
@@ -51,7 +51,7 @@ void stack::push(int x)
 }
 
 // Utility function to pop top element from the stack
-int stack::pop()
+unsigned int stack::pop()
 {
 	// check for stack underflow
 	if (isEmpty())
@@ -67,7 +67,7 @@ int stack::pop()
 }
 
 // Utility function to return top element in a stack
-int stack::peek()
+unsigned int stack::peek()
 {
 	if (!isEmpty())
 		return arr[top];

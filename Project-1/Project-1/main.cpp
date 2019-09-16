@@ -2,21 +2,26 @@
 #include"Stack.h"
 #include<sstream>
 #include<string>
-#include<stream>
+#include<iostream>
 
 using namespace std;
 
 
 int main() {
 
-	stack* stack = new stack();
+	stack* s = new stack();
 
-	stack->push(2);
-	stack->push(4);
-	stack->push(3);
+	unsigned int n1 = 22465;
+	unsigned int n2 = 22465;
+	unsigned int n3 = 22465;
 
-	cout << stack->size() << endl;
-	cout << stack->peek() << endl;
+
+	s->push(n1);
+	s->push(n2);
+	s->push(n3);
+
+	cout << s->size() << endl;
+	cout << s->peek() << endl;
 
 
 
