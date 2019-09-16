@@ -9,14 +9,22 @@
 #define ONE 1
 
 #include "Utiles.h"
+#include "Lista.h"
+#include"Stack.h"
+using namespace std;
+
 
 class Integer {
 private:
-	string numero;
+	Lista<stack>* ListaStack;
 	char signo;
 public:
 	// Constructores y Destructor
-	Integer();
+	Integer() {
+		ListaStack = new Lista<stack>();
+		signo = ' ';
+	
+	}
 	Integer(const Integer&);
 	Integer(const long long&);
 	Integer(const string&);
