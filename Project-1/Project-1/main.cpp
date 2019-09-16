@@ -49,10 +49,14 @@ int main() {
 
 
 	Integer *i1 = new Integer();
+	Integer* i2 = new Integer();
+
+
 	i1->agregar("111122223333444455556666777788889999");
+	/*Integer* resultado = i1->suma(i1->getLista(), i2->getLista());
 	cout << "efsdf" << endl;
 
-	i1->getLista()->Print();
+	i1->getLista()->Print();*/
 
 
 
