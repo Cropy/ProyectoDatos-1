@@ -25,7 +25,7 @@ void Integer::agregar(string numero) {
 		}
 		bandera = true;
 	}
-	for (int i = 0; i <= numero.size(); i += 4) {
+	for (int i = 0; i < numero.size(); i += 4) {
 		if (pila == nullptr) {
 			pila = new stack();
 		}
@@ -35,7 +35,7 @@ void Integer::agregar(string numero) {
 		}
 		if (!pila->isFull()) {
 
-			if (numero.size() - i < 4) {
+			if (numero.size() - i <= 4) {
 				auxiliar = numero.substr(i, numero.size() - i);
 				pila->push(stoul(auxiliar));
 
