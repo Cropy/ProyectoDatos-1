@@ -34,6 +34,7 @@ public:
 	char get_signo();
 	void set_numero(string);
 	void set_signo(char);
+	Lista<stack>* getLista();
 
 	//Metodos
 	void agregar(string numero);
