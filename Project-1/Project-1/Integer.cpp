@@ -1,5 +1,10 @@
 #include "Integer.h"
 
+Lista<stack>* Integer::getLista()
+{
+	return this->ListaStack;
+}
+
 void Integer::agregar(string numero) {
 	stack* pila = nullptr;
 	string auxiliar;
@@ -15,7 +20,7 @@ void Integer::agregar(string numero) {
 		}
 		bandera = true;
 	}
-	for (int i = 0; i < numero.size(); i += 4) {
+	for (int i = 0; i <= numero.size(); i += 4) {
 		if (pila == nullptr) {
 			pila = new stack();
 		}
@@ -23,16 +28,19 @@ void Integer::agregar(string numero) {
 			auxiliar = numero.substr(i, numero.size() - i);
 			pila->push(stoul(auxiliar));
 		}
-		else if (numero.size() - i < 4) {
-			auxiliar = numero.substr(i, numero.size() - i);
-			pila->push(stoul(auxiliar));
-			ListaStack->agregar(pila);
+		if (!pila->isFull()) {
+			if (numero.size() - i < 4) {
+				auxiliar = numero.substr(i, numero.size() - i);
+				pila->push(stoul(auxiliar));
+
+			}
+			else {
+				auxiliar = numero.substr(i, 4);
+				pila->push(stoul(auxiliar));
+			}
 		}
+		
 		else {
-			auxiliar = numero.substr(i, 4);
-			pila->push(stoul(auxiliar));
-		}
-		if (pila->isEmpty()) {
 			ListaStack->agregar(pila);
 			pila = nullptr;
 		}

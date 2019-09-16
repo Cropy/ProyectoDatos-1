@@ -47,7 +47,7 @@ void Nodo<T>::setDatos(T* dato) {
 template<class T>
 inline void Nodo<T>::print()
 {
-	cout << this->datos->peek();
+	cout << this->datos->peek() << endl;;
 
 }
 
