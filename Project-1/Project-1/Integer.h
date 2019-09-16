@@ -11,6 +11,10 @@
 #include "Utiles.h"
 #include "Lista.h"
 #include"Stack.h"
+
+#include <iostream>
+#include <sstream>
+
 using namespace std;
 
 
@@ -35,9 +39,11 @@ public:
 	void set_numero(string);
 	void set_signo(char);
 	Lista<stack>* getLista();
+	void setLista(Lista<stack>* lista);
 
 	//Metodos
 	void agregar(string numero);
+	Integer* suma(Lista<stack>* lista1, Lista<stack>* lista2);
 
 	// Sobrecarga operadores asignacion
 	Integer& operator =(const Integer&);
@@ -57,7 +63,7 @@ public:
 	Integer& operator/=(const string&);
 
 	// Sobrecarga operadores aritmeticos
-	Integer operator+(const Integer&) const;
+	Integer& operator+( Integer&) ;
 	Integer operator-(const Integer&) const;
 	Integer operator*(const Integer&) const;
 	Integer operator/(const Integer&) const;

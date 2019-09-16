@@ -22,6 +22,8 @@ private:
 
 public:
 	Lista();
+	int getTamano();
+	Nodo<T>* getInicio();
 	void agregar(T*);
 	//void eliminar(T*);
 	T* buscar(T*);
@@ -34,6 +36,18 @@ template <class T>
 Lista<T>::Lista() {
 	tamano = 0;
 	inicio = nullptr;
+}
+
+template<class T>
+inline int Lista<T>::getTamano()
+{
+	return tamano;
+}
+
+template<class T>
+inline Nodo<T>* Lista<T>::getInicio()
+{
+	return this->inicio;
 }
 
 template <class T>

@@ -31,7 +31,7 @@ Nodo<T>::Nodo() {
 
 template <class T>
 T* Nodo<T>::getDatos() {
-	return datos->peek();
+	return datos;
 }
 
 template <class T>

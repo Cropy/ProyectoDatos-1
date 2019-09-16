@@ -5,6 +5,11 @@ Lista<stack>* Integer::getLista()
 	return this->ListaStack;
 }
 
+void Integer::setLista(Lista<stack>* lista)
+{
+	this->ListaStack = lista;
+}
+
 void Integer::agregar(string numero) {
 	stack* pila = nullptr;
 	string auxiliar;
@@ -50,6 +55,40 @@ void Integer::agregar(string numero) {
 			pila = nullptr;
 		}
 	}
+
+}
+
+Integer* Integer::suma(Lista<stack>* lista1, Lista<stack>* lista2)
+{
+	Integer* resultado = 0;
+	unsigned int suma = 0;
+
+	stack* stack1 = new stack();
+	Nodo<stack>* nodo1 = new Nodo<stack>();
+
+	if (lista1->getTamano() != 0 && lista2->getTamano() == 0)
+	{
+		nodo1 = (Nodo<stack>*)lista1->getInicio();
+		while (nodo1->getSiguiente() != nullptr)
+		{
+
+			stack1 = nodo1->getDatos();
+			while (!stack1->isFull())
+				suma = stack1->pop();
+                resultado->agregar(std::to_string(suma));
+	    }
+		      nodo1 = nodo1->getSiguiente();
+	}
+
+		if (lista1->getTamano() == 0 && lista2->getTamano() != 0)
+		{
+
+
+
+		}
+		return resultado;
+
+	
 
 }
 
@@ -202,10 +241,12 @@ void Integer::agregar(string numero) {
 //
 //}
 //
-//Integer Integer::operator+(const string& inte) const
-//{
-//
-//}
+Integer& Integer::operator+( Integer& inte) 
+{
+	
+	return *suma(this->getLista(), inte.getLista());
+
+}
 //
 //Integer Integer::operator-(const string& inte) const
 //{
