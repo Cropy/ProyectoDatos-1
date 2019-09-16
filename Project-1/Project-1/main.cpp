@@ -50,13 +50,8 @@ int main() {
 
 	Integer *i1 = new Integer();
 	i1->agregar("111122223333444455556666777788889999");
-	cout << "efsdf" << endl;
-
-	i1->getLista()->Print();
 
 
-
-	/*ListaStack->Print();*/
 
 
 
