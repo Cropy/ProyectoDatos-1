@@ -42,6 +42,7 @@ void Lista<T>::agregar(T* dato) {
 	nuevo->setDatos(dato);
 	nuevo->setSiguiente(nullptr);
 	if (inicio == nullptr) {
+		
 		inicio = nuevo;
 		tamano++;
 	}
