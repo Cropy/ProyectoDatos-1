@@ -46,6 +46,7 @@ public:
 	Integer* suma(Lista<stack>* lista1, Lista<stack>* lista2);
 	string StacktoString(stack* s);
 	string NodotoString(Nodo<stack>* s);
+	string sumaStack(Nodo<stack>* s, Nodo<stack>* s1);
 
 
 
