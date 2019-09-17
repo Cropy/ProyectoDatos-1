@@ -106,48 +106,44 @@ Integer* Integer::suma(Lista<stack>* lista1, Lista<stack>* lista2)
 	
 
 	
-	//if(!bandera ) { // si NO ENTRO  a los metodos anteriores
+	if(!bandera ) { // si NO ENTRO  a los metodos anteriores
 
-	//	nodo1 = lista1->getInicio();
-	//	nodo2 = lista2->getInicio();
+		nodo1 = lista1->getInicio();
+		nodo2 = lista2->getInicio();
 
-	//	while (nodo1 != nullptr && nodo2 != nullptr) // en el momento que una lista sea mas larga que la otra para
-	//	{
-	//		string aux;// guarda string que retorna NodoToStrin();
-	//		aux= NodotoString(nodo1);
-	//		 n1 = stoul(aux, nullptr); //convirtes 
-	//		 aux = NodotoString(nodo2);
+		while (nodo1 != nullptr && nodo2 != nullptr) // en el momento que una lista sea mas larga que la otra para
+		{
+			
+			sumaS += sumaStack(nodo1, nodo2);
+			nodo1 = nodo1->getSiguiente();
+			nodo2 = nodo2->getSiguiente();
 
-	//	     n2 = stoul(aux,nullptr);
-	//		 resul = n2 + n1;
-	//		 sumaS += std::to_string(resul);
+		}
 
-	//		nodo1 = nodo1->getSiguiente();
-	//		nodo2 = nodo2->getSiguiente();
 
-	//	}
+		}
 
-	//	if (nodo1 != nullptr && nodo2 == nullptr) // si lista es  mas larga que lista 2, continua con la lista 1
-	//	{
-	//		while (nodo1 != nullptr)
-	//		{
-	//			n1= stoul(NodotoString(nodo1));
-	//			sumaS += std::to_string(n1);
-	//			nodo1 = nodo1->getSiguiente();
+		if (nodo1 != nullptr && nodo2 == nullptr) // si lista es  mas larga que lista 2, continua con la lista 1
+		{
+			while (nodo1 != nullptr)
+			{
+				n1= stoul(NodotoString(nodo1));
+				sumaS += std::to_string(n1);
+				nodo1 = nodo1->getSiguiente();
 
-	//		}
-	//	}
+			}
+		}
 
-	//	if (nodo2 != nullptr && nodo1 == nullptr) // si lista es  mas larga que lista 2, continua con la lista 2
-	//	{
-	//		while (nodo2 != nullptr)
-	//		{
-	//			n2 = stoul(NodotoString(nodo2));
-	//			sumaS += std::to_string(n2);
-	//			nodo2 = nodo1->getSiguiente();
+		if (nodo2 != nullptr && nodo1 == nullptr) // si lista es  mas larga que lista 2, continua con la lista 2
+		{
+			while (nodo2 != nullptr)
+			{
+				n2 = stoul(NodotoString(nodo2));
+				sumaS += std::to_string(n2);
+				nodo2 = nodo1->getSiguiente();
 
-	//		}
-	//	}
+			}
+		}
 
 
 	/*}*/
@@ -159,11 +155,15 @@ Integer* Integer::suma(Lista<stack>* lista1, Lista<stack>* lista2)
 
 }
 
+
 string Integer::StacktoString(stack* s)  // concatena los numeros de unStack en un String
 {
+	unsigned int suma = 0;
 	string resultado;
-	while (!s->isEmpty())
-		resultado += std::to_string(s->pop());
+	while (!s->isEmpty()) {
+		suma += s->pop();
+	}
+	resultado = std::to_string(suma);
 
 	return resultado;
 }
@@ -174,6 +174,20 @@ string Integer::NodotoString(Nodo<stack>* s)
 
 	return StacktoString(s->getDatos());
 
+}
+
+string Integer::sumaStack(Nodo<stack>* s, Nodo<stack>* s1)
+{
+	stack* stack1 = s->getDatos();
+	stack* stack2 = s1->getDatos();
+	unsigned int sum = 0;
+	string resul;
+	while (!stack1->isEmpty() && !stack2->isEmpty()) {
+	
+		sum = stack1->pop() + stack2->pop();
+		resul += std::to_string(sum);
+	}
+	return resul;
 }
 
 //// Constructores y Destructor
