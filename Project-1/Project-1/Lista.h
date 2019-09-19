@@ -8,17 +8,13 @@
 #include <iostream>
 #include <sstream>
 #include "Nodo.h"
-
 using namespace std;
-
-template <class T> class Lista;
 
 template <class T>
 class Lista {
 private:
 	Nodo<T>* inicio;
 	int tamano;
-
 public:
 	Lista();
 	int getTamano();
@@ -136,10 +132,5 @@ inline ostream& operator << (ostream& salida, Lista<T>& l) {
 	salida << l.toString();
 	return salida;
 }
-
-
-
-
-
 #endif LISTA_H
 

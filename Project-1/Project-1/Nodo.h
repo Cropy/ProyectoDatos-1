@@ -7,10 +7,7 @@
 
 #include <iostream>
 #include <sstream>
-
 using namespace std;
-
-template <class T> class Nodo;
 
 template <class T>
 class Nodo {
