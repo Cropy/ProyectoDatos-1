@@ -1,5 +1,39 @@
 #include "Integer.h"
 
+// Constructores y Destructor
+Integer::Integer()
+{
+	ListaStack = new Lista<stack>();
+	signo = ' ';
+}
+
+Integer::Integer(const Integer&)
+{
+}
+
+Integer::Integer(const long long&)
+{
+}
+
+Integer::Integer(const string&)
+{
+}
+
+Integer::~Integer()
+{
+}
+
+// Sets y Gets
+char Integer::get_signo()
+{
+	return signo;
+}
+
+void Integer::set_signo(char sig)
+{
+	signo = sig;
+}
+
 Lista<stack>* Integer::getLista()
 {
 	return this->ListaStack;
@@ -10,8 +44,7 @@ void Integer::setLista(Lista<stack>* lista)
 	this->ListaStack = lista;
 }
 
-
-
+// Metodos
 void Integer::agregar(string numero) {
 	stack* pila = nullptr;
 	string auxiliar;
@@ -70,9 +103,9 @@ Integer* Integer::suma(Lista<stack>* lista1, Lista<stack>* lista2)
 	stack* stack1= nullptr; // guarda el stack de la lista 1;
 	stack* stack2 = nullptr; // guarda el stack de la lista 2;
 
-	unsigned int n1=0 ; //convirtes 
-	unsigned int n2=0;
-	unsigned int resul=0;
+	unsigned int n1 = 0 ; //convirtes 
+	unsigned int n2 = 0;
+	unsigned int resul = 0;
 
 	Nodo<stack>* nodo1 = new Nodo<stack>(); // guarda el nodo de la lista1 para recorrer
 	Nodo<stack>* nodo2  = new Nodo<stack>(); // guarda el nodo de la lista2 para recorrer
@@ -88,8 +121,7 @@ Integer* Integer::suma(Lista<stack>* lista1, Lista<stack>* lista2)
 		bandera = true;
 
 	}
-	
-		
+			
 	if (lista1->getTamano() == 0 && lista2->getTamano() != 0) // si la lista2 tiene elementos y la lista1 = 0
 	{
 
@@ -105,7 +137,6 @@ Integer* Integer::suma(Lista<stack>* lista1, Lista<stack>* lista2)
 	}
 	
 
-	
 	if(!bandera ) { // si NO ENTRO  a los metodos anteriores
 
 		nodo1 = lista1->getInicio();
@@ -145,16 +176,9 @@ Integer* Integer::suma(Lista<stack>* lista1, Lista<stack>* lista2)
 			}
 		}
 
-
-	/*}*/
 		resultado->agregar(sumaS); //agrega el String a la lista del la variable a retonar
-
 		return resultado;
-
-	
-
 }
-
 
 string Integer::StacktoString(stack* s)  // concatena los numeros de unStack en un String
 {
@@ -190,38 +214,6 @@ string Integer::sumaStack(Nodo<stack>* s, Nodo<stack>* s1)
 	return resul;
 }
 
-//// Constructores y Destructor
-//Integer::Integer()
-//{
-//
-//}
-//
-//Integer::Integer(const Integer& inte)
-//{
-//
-//}
-//
-//Integer::Integer(const long long& num)
-//{
-//
-//}
-//
-//Integer::Integer(const string& hil)
-//{
-//
-//}
-//
-//Integer::~Integer()
-//{
-//
-//}
-//
-//// Sets y Gets
-//string Integer::get_numero() { return numero; }
-//char Integer::get_signo() { return signo; }
-//void Integer::set_numero(string num) { numero = num; }
-//void Integer::set_signo(char sig) { signo = sig; }
-//
 //// Sobrecarga operadores asignacion
 //Integer& Integer::operator =(const Integer& inte)
 //{
@@ -297,7 +289,7 @@ string Integer::sumaStack(Nodo<stack>* s, Nodo<stack>* s1)
 //{
 //
 //}
-//
+
 //// Sobrecarga operadores aritmeticos
 //Integer Integer::operator+(const Integer& inte) const
 //{
@@ -338,14 +330,14 @@ string Integer::sumaStack(Nodo<stack>* s, Nodo<stack>* s1)
 //{
 //
 //}
-//
-Integer& Integer::operator+( Integer& inte) 
+
+Integer& Integer::operator+(Integer& inte) 
 {
 	
 	return *suma(this->getLista(), inte.getLista());
 
 }
-//
+
 //Integer Integer::operator-(const string& inte) const
 //{
 //
@@ -360,7 +352,7 @@ Integer& Integer::operator+( Integer& inte)
 //{
 //
 //}
-//
+
 //// Sobrecarga operadores comparacion
 //bool Integer::operator<(const Integer& inte) const
 //{
@@ -451,7 +443,7 @@ Integer& Integer::operator+( Integer& inte)
 //{
 //
 //}
-//
+
 //// Sobrecarga operadores E/S
 ////friend istream& operator>>(istream& o, Integer& obj)
 ////{
@@ -462,7 +454,7 @@ Integer& Integer::operator+( Integer& inte)
 ////{
 ////
 ////}
-//
+
 //// Extras
 //string Integer::toString()
 //{
@@ -473,8 +465,8 @@ Integer& Integer::operator+( Integer& inte)
 //{
 //
 //}
-//
-///*string to_string() const;
-//int to_int() const;
-//long to_long() const;
-//long long to_long_long() const;*/
+
+/*string to_string() const;
+int to_int() const;
+long to_long() const;
+long long to_long_long() const;*/

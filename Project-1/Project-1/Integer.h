@@ -10,7 +10,7 @@
 
 #include "Utiles.h"
 #include "Lista.h"
-#include"Stack.h"
+#include "Stack.h"
 
 #include <iostream>
 #include <sstream>
@@ -24,20 +24,15 @@ private:
 	char signo;
 public:
 	// Constructores y Destructor
-	Integer() {
-		ListaStack = new Lista<stack>();
-		signo = ' ';
-	}
+	Integer();
 	Integer(const Integer&);
 	Integer(const long long&);
 	Integer(const string&);
 	~Integer();
 
 	// Sets y Gets
-	string get_numero();
 	char get_signo();
-	void set_numero(string);
-	void set_signo(char);
+	void set_signo(char sig);
 	Lista<stack>* getLista();
 	void setLista(Lista<stack>* lista);
 
@@ -107,7 +102,7 @@ public:
 
 	// Extras
 	string toString();
-	Integer parse(string);
+	Integer parse(string hilera);
 	/*string to_string() const;
 	int to_int() const;
 	long to_long() const;

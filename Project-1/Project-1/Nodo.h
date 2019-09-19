@@ -1,4 +1,7 @@
-#pragma once
+// Nodo.h
+// Autores: Jeoffrey Prado, Christian Cruz, Lorenzo Solorzano
+// Descripcion: Clase Nodo, utilizado en la lista enlazada
+
 #ifndef NODO_H
 #define NODO_H
 
@@ -62,6 +65,4 @@ inline unsigned int Nodo<T>::pop()
 {
 	return this->datos->pop();
 }
-
-
 #endif NODO_H

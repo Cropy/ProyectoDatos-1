@@ -1,5 +1,4 @@
-
-#include"Stack.h"
+#include "Stack.h"
 
 // Constructor to initialize stack
 stack::stack(int size)
