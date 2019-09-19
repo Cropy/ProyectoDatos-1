@@ -43,8 +43,6 @@ public:
 	string NodotoString(Nodo<stack>* s);
 	string sumaStack(Nodo<stack>* s, Nodo<stack>* s1);
 
-
-
 	// Sobrecarga operadores asignacion
 	Integer& operator =(const Integer&);
 	Integer& operator+=(const Integer&);
