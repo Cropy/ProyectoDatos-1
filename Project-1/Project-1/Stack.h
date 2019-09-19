@@ -18,7 +18,6 @@ private:
 	unsigned int* arr;
 	int top;
 	int capacity;
-
 public:
 	stack(int size = SIZE);		// constructor
 
