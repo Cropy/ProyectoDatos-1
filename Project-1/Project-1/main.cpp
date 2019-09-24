@@ -52,8 +52,8 @@ int main() {
 	Integer* i2 = new Integer();
 
 
-	i1->agregar("11111111111111111111111111111111");
-	i2->agregar("11111111111111111111111111111111");
+	i1->agregar("111122223333444433331111");
+	i2->agregar("111122223333444433331111");
 
 	Integer* resultado = i1->suma(i1->getLista(), i2->getLista());
 	cout << "efsdf" << endl;

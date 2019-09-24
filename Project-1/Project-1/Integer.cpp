@@ -114,7 +114,7 @@ Integer* Integer::suma(Lista<stack>* lista1, Lista<stack>* lista2)
 		while (nodo1 != nullptr && nodo2 != nullptr) // en el momento que una lista sea mas larga que la otra para
 		{
 			
-			sumaS += sumaStack(nodo1, nodo2);
+			sumaS += sumaStack(nodo1, nodo2); 
 			nodo1 = nodo1->getSiguiente();
 			nodo2 = nodo2->getSiguiente();
 
@@ -168,7 +168,7 @@ string Integer::StacktoString(stack* s)  // concatena los numeros de unStack en 
 	return resultado;
 }
 
-string Integer::NodotoString(Nodo<stack>* s)
+string Integer::NodotoString(Nodo<stack>* s) // concatena los numeros del Stack del nodo  en un String
 {
 	
 
@@ -176,7 +176,7 @@ string Integer::NodotoString(Nodo<stack>* s)
 
 }
 
-string Integer::sumaStack(Nodo<stack>* s, Nodo<stack>* s1)
+string Integer::sumaStack(Nodo<stack>* s, Nodo<stack>* s1)// recibe 2 nodos y va sumamando ada pocosion del stack de cada nodo
 {
 	stack* stack1 = s->getDatos();
 	stack* stack2 = s1->getDatos();
@@ -186,6 +186,22 @@ string Integer::sumaStack(Nodo<stack>* s, Nodo<stack>* s1)
 	
 		sum = stack1->pop() + stack2->pop();
 		resul += std::to_string(sum);
+	}
+
+	if (stack2->isEmpty() && !stack1->isEmpty()) { // si la pila 2 ya esta vacia y la pila1 no
+		while (!stack1->isEmpty()) {
+
+			sum = stack1->pop();
+			resul += std::to_string(sum);
+		}
+	}
+
+	if (stack1->isEmpty() && !stack2->isEmpty()) { // si la pila 1 ya esta vacia y la pila2 no
+		while (!stack2->isEmpty()) {
+
+			sum = stack2->pop();
+			resul += std::to_string(sum);
+		}
 	}
 	return resul;
 }
