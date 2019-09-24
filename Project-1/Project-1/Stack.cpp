@@ -31,7 +31,7 @@ unsigned int stack::pop()
 		exit(EXIT_FAILURE);
 	}
 
-	cout << "Removing " << peek() << endl;
+	//cout << "Removing " << peek() << endl;
 
 	// decrease stack size by 1 and (optionally) return the popped element
 	return arr[top--];

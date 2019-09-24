@@ -114,6 +114,7 @@ inline void Lista<T>::Print()
 	Nodo<T>* walk = inicio;
 	while (walk) 
 	{
+
 		walk->print();
 		walk = walk->getSiguiente();
 	}

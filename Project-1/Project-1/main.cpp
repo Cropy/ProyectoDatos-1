@@ -52,18 +52,18 @@ int main() {
 	Integer* i2 = new Integer();
 
 
-	i1->agregar("11111111111111111111111111111111");
-	i2->agregar("00000000000000000111111111111111");
+	i1->agregar("666688886666444466668888");
+	i2->agregar("333344443333222233334444");
 	//"11111111111111111111111111111111"
 
 	Integer* resultado = i1->resta(i1->getLista(), i2->getLista());
 	cout << "efsdf" << endl;
 
-	//i1->getLista()->Print();*/
+	resultado->getLista()->Print();
 
 
 
-	/*ListaStack->Print();*/
+	
 
 
 

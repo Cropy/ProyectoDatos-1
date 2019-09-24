@@ -48,7 +48,8 @@ void Nodo<T>::setDatos(T* dato) {
 template<class T>
 inline void Nodo<T>::print()
 {
-	cout << this->datos->peek() << endl;;
+	while(!datos->isEmpty())
+	cout << this->datos->pop();
 
 }
 
