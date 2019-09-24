@@ -53,9 +53,10 @@ int main() {
 
 
 	i1->agregar("11111111111111111111111111111111");
-	i2->agregar("11111111111111111111111111111111");
+	i2->agregar("00000000000000000111111111111111");
+	//"11111111111111111111111111111111"
 
-	Integer* resultado = i1->suma(i1->getLista(), i2->getLista());
+	Integer* resultado = i1->resta(i1->getLista(), i2->getLista());
 	cout << "efsdf" << endl;
 
 	//i1->getLista()->Print();*/
