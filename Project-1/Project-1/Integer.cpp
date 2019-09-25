@@ -338,46 +338,52 @@ string Integer::multiStack(Nodo<stack>* s1, Nodo<stack>* s2)
 
 Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 {
-	Nodo<stack>* nodo1 = lista1->getInicio();
-	Nodo<stack>* nodo2 = lista2->getInicio();
-	string aux1;
-	string aux2="0";
-	string aux3="0";
-	unsigned int multi = 0;
-
+	Nodo<stack>* n1=lista1->getInicio();
+	Nodo<stack>* n2= lista2->getInicio();
+	string  l1, l2;
+	int i, j = 0;
 	Integer* resultado = new Integer();
-	
-		unsigned int num1 = 0, num2 = 0;
+	string numeroFinal;
 
-		// Generate numbers from linked lists 
-		while (nodo1 || nodo2)
+	int xx = 10;
+		unsigned int* prod = new unsigned  int[/*m + n - 1*/xx];
+
+		// Initialize the porduct polynomial 
+		for (int i = 0; i < xx - 1; i++)
+			prod[i] = 0;
+
+		// Multiply two polynomials term by term 
+
+		// Take ever term of first polynomial 
+		while (n1)
 		{
-			if (nodo1)
-			{
-				num1 = num1 * 10 + stoul(NodotoString(nodo1));
-				/*aux1 = std::to_string(num1);*/
-				nodo1=nodo1->getSiguiente();
-			}
-			if (nodo2)
-			{
-				num2 = num2 * 10 + stoul(NodotoString(nodo2));
-				/*aux2 = std::to_string(num2);*/
-				nodo2 = nodo2->getSiguiente();
-
-			}
-
-			 aux1= std::to_string(num1 * num2);
-			 aux2= 
-			multi = stoul(aux2) + stoul(aux1);
-			aux3 = std::to_string(multi);
-
 			
+			// Multiply the current term of first polynomial 
+			// with every term of second polynomial. 
+			while (n2) {
+				
+				l1 = NodotoString(n1);
+				l2 = NodotoString(n2);
+
+				prod[i + j] += stoul(l1) * stoul(l2);
+				n2 = n2->getSiguiente();
+				j++;
+
+			}
+
+			n1 = n1->getSiguiente();
+			i++;
+		}
+		for (int i = 0; i < xx; i++) {
+		
+			numeroFinal += std::to_string(prod[i]);
+		
 		}
 
-		// Return multiplication of  
-		// two numbers 
-		resultado->agregar(aux3);
+		resultado->agregar(numeroFinal);
+
 		return resultado;
+	
 	
 	}
 	
