@@ -338,93 +338,50 @@ string Integer::multiStack(Nodo<stack>* s1, Nodo<stack>* s2)
 
 Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 {
-	Integer* resultado = new Integer(); // valor a retonar
+	Nodo<stack>* nodo1 = lista1->getInicio();
+	Nodo<stack>* nodo2 = lista2->getInicio();
+	string aux1;
+	string aux2="0";
+	string aux3="0";
+	unsigned int multi = 0;
 
-	string mutilR; // va concatenado valores 
-	bool bandera = false;// evitar al if en la linea 102
-	stack* stack1 = nullptr; // guarda el stack de la lista 1;
-	stack* stack2 = nullptr; // guarda el stack de la lista 2;
-
-	unsigned int n1 = 0; //convirtes 
-	unsigned int n2 = 0;
-	unsigned int resul = 0;
-
-	Nodo<stack>* nodo1 = new Nodo<stack>(); // guarda el nodo de la lista1 para recorrer
-	Nodo<stack>* nodo2 = new Nodo<stack>(); // guarda el nodo de la lista2 para recorrer
-
-	if (lista1->getTamano() != 0 && lista2->getTamano() == 0) // si la lista1 tiene elementos y la lista2 = 0
-	{
-		nodo1 = lista1->getInicio();
-		while (nodo1 != nullptr)
-		{
-
-			nodo1 = nodo1->getSiguiente();
-		}
-		bandera = true;
-
-	}
-
-	if (lista1->getTamano() == 0 && lista2->getTamano() != 0) // si la lista2 tiene elementos y la lista1 = 0
-	{
-
-		nodo2 = lista2->getInicio();
-		while (nodo2 != nullptr)
-		{
-			mutilR += NodotoString(nodo2);
-			nodo2 = nodo1->getSiguiente();
-		}
-		bandera = true;
-
-
-	}
-
-
-	if (!bandera) { // si NO ENTRO  a los metodos anteriores
-
-		nodo1 = lista1->getInicio();
-		nodo2 = lista2->getInicio();
-
-		while (nodo1 != nullptr && nodo2 != nullptr) // en el momento que una lista sea mas larga que la otra para
-		{
-
-			mutilR += multiStack(nodo1, nodo2);
-			nodo1 = nodo1->getSiguiente();
-			nodo2 = nodo2->getSiguiente();
-
-		}
-
-
-	}
-
-	if (nodo1 != nullptr && nodo2 == nullptr) // si lista es  mas larga que lista 2, continua con la lista 1
-	{
-		while (nodo1 != nullptr)
-		{
-			n1 = stoul(NodotoString(nodo1));
-			mutilR += std::to_string(n1);
-			nodo1 = nodo1->getSiguiente();
-
-		}
-	}
-
-	if (nodo2 != nullptr && nodo1 == nullptr) // si lista es  mas larga que lista 2, continua con la lista 2
-	{
-		while (nodo2 != nullptr)
-		{
-			n2 = stoul(NodotoString(nodo2));
-			mutilR += std::to_string(n2);
-			nodo2 = nodo1->getSiguiente();
-
-		}
-	}
-
-	resultado->agregar(mutilR); //agrega el String a la lista del la variable a retonar
-	return resultado;
-
-
-
+	Integer* resultado = new Integer();
 	
-}
+		unsigned int num1 = 0, num2 = 0;
+
+		// Generate numbers from linked lists 
+		while (nodo1 || nodo2)
+		{
+			if (nodo1)
+			{
+				num1 = num1 * 10 + stoul(NodotoString(nodo1));
+				/*aux1 = std::to_string(num1);*/
+				nodo1=nodo1->getSiguiente();
+			}
+			if (nodo2)
+			{
+				num2 = num2 * 10 + stoul(NodotoString(nodo2));
+				/*aux2 = std::to_string(num2);*/
+				nodo2 = nodo2->getSiguiente();
+
+			}
+
+			 aux1= std::to_string(num1 * num2);
+			 aux2= 
+			multi = stoul(aux2) + stoul(aux1);
+			aux3 = std::to_string(multi);
+
+			
+		}
+
+		// Return multiplication of  
+		// two numbers 
+		resultado->agregar(aux3);
+		return resultado;
+	
+	}
+	
+
 
 //// Sobrecarga operadores asignacion
 //Integer& Integer::operator =(const Integer& inte)
