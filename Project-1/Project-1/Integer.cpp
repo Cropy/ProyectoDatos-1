@@ -357,7 +357,7 @@ Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 		nodo1 = lista1->getInicio();
 		while (nodo1 != nullptr)
 		{
-			mutilR += NodotoString(nodo1);
+
 			nodo1 = nodo1->getSiguiente();
 		}
 		bandera = true;
@@ -387,7 +387,7 @@ Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 		while (nodo1 != nullptr && nodo2 != nullptr) // en el momento que una lista sea mas larga que la otra para
 		{
 
-			mutilR += restaStack(nodo1, nodo2);
+			mutilR += multiStack(nodo1, nodo2);
 			nodo1 = nodo1->getSiguiente();
 			nodo2 = nodo2->getSiguiente();
 

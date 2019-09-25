@@ -30,15 +30,15 @@ int main() {
 	Integer* i2 = new Integer();
 
 
-	i1->agregar("20");
+	i1->agregar("11111111111111111111111");
 	i2->agregar("3");
 
 
 	
 
-	string g =i1->multiStack(i1->getLista()->getInicio(), i2->getLista()->getInicio());
+     Integer* g= i1->multiplicacion(i1->getLista(), i2->getLista());
 
-	cout << g << endl;
+	cout << *g << endl;
 
 	
 
