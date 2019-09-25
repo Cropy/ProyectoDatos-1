@@ -10,7 +10,7 @@
 using namespace std;
 
 // define default capacity of the stack
-#define SIZE 4
+#define SIZE 2
 
 // Class for stack
 class stack {

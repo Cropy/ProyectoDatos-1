@@ -6,22 +6,22 @@ Integer::Integer()
 	ListaStack = new Lista<stack>();
 	signo = ' ';
 }
-
-Integer::Integer(const Integer&)
-{
-}
-
-Integer::Integer(const long long&)
-{
-}
-
-Integer::Integer(const string&)
-{
-}
-
-Integer::~Integer()
-{
-}
+//
+//Integer::Integer(const Integer&)
+//{
+//}
+//
+//Integer::Integer(const long long&)
+//{
+//}
+//
+//Integer::Integer(const string&)
+//{
+//}
+//
+//Integer::~Integer()
+//{
+//}
 
 // Sets y Gets
 char Integer::get_signo()
@@ -46,6 +46,7 @@ void Integer::setLista(Lista<stack>* lista)
 
 // Metodos
 void Integer::agregar(string numero) {
+	int tam = 3;
 	stack* pila = nullptr;
 	string auxiliar;
 	bool bandera = false;
@@ -60,11 +61,11 @@ void Integer::agregar(string numero) {
 		}
 		bandera = true;
 	}
-	for (int i = 0; i < numero.size(); i += 4) {
+	for (int i = 0; i < numero.size(); i += tam) {
 		if (pila == nullptr) {
 			pila = new stack();
 		}
-		if (numero.size() - i < 4 && pila->isEmpty()) {
+		if (numero.size() - i < tam && pila->isEmpty()) {
 			auxiliar = numero.substr(i, numero.size() - i);
 			pila->push(stoul(auxiliar));
 			ListaStack->agregar(pila);
@@ -72,14 +73,15 @@ void Integer::agregar(string numero) {
 		}
 		if (!pila->isFull()) {
 
-			if (numero.size() - i <= 4) {
+			if (numero.size() - i <= tam) {
 				auxiliar = numero.substr(i, numero.size() - i);
 				pila->push(stoul(auxiliar));
 				ListaStack->agregar(pila);
+				return;
 
 			}
 			else {
-				auxiliar = numero.substr(i, 4);
+				auxiliar = numero.substr(i, tam);
 				pila->push(stoul(auxiliar));
 			}
 			cout << "Agregando a pila " << endl;
@@ -269,12 +271,12 @@ Integer* Integer::resta(Lista<stack>* lista1, Lista<stack>* lista2) {
 
 string Integer::StacktoString(stack* s)  // concatena los numeros de unStack en un String
 {
-	unsigned int suma = 0;
+	
 	string resultado;
 	while (!s->isEmpty()) {
-		suma += s->pop();
+		resultado += std::to_string(s->pop());
 	}
-	resultado = std::to_string(suma);
+	
 
 	return resultado;
 }
@@ -315,66 +317,70 @@ string Integer::restaStack(Nodo<stack>* s1, Nodo<stack>* s2) {
 	return resul;
 }
 
-string Integer::multiStack(Nodo<stack>* s1, Nodo<stack>* s2)
-{
-	stack* stack1 = s1->getDatos();
-	stack* stack2 = s2->getDatos();
-	unsigned int multi = 0;
-	string resul;
-	string cantSumas= StacktoString(stack2);
-	string sumando = StacktoString(stack1);
-
-	int i = 0;
-
-	while (i < stoul(cantSumas)) {
-		
-		multi += stoul(sumando);
-		i++;
-	}
-
-	return std::to_string(multi);
-	
-}
+//string Integer::multiStack(Nodo<stack>* s1, Nodo<stack>* s2)
+//{
+//	stack* stack1 = s1->getDatos();
+//	stack* stack2 = s2->getDatos();
+//	unsigned int multi = 0;
+//	string resul;
+//	string cantSumas= StacktoString(stack2);
+//	string sumando = StacktoString(stack1);
+//
+//	unsigned int i = 0;
+//
+//	while (i < stoul(cantSumas)) {
+//		
+//		multi += stoul(sumando);
+//		i++;
+//	}
+//
+//	return std::to_string(multi);
+//	
+//}
 
 Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 {
 	Nodo<stack>* n1=lista1->getInicio();
 	Nodo<stack>* n2= lista2->getInicio();
 	string  l1, l2;
-	int i, j = 0;
+	int x = 0;
+    int j = 0;
+	int tam1 = lista1->cantNodos();
+	int tam2 = lista2->cantNodos();
+
 	Integer* resultado = new Integer();
 	string numeroFinal;
 
-	int xx = 10;
-		unsigned int* prod = new unsigned  int[/*m + n - 1*/xx];
+	
+		unsigned int* prod = new unsigned  int[(tam1+tam2)-1];
 
 		// Initialize the porduct polynomial 
-		for (int i = 0; i < xx - 1; i++)
+		for (int i = 0; i < (tam1 + tam2) - 1; i++)
 			prod[i] = 0;
 
 		// Multiply two polynomials term by term 
 
 		// Take ever term of first polynomial 
-		while (n1)
+		while (x<tam1)
 		{
-			
+			l1 = NodotoString(n1);
 			// Multiply the current term of first polynomial 
 			// with every term of second polynomial. 
-			while (n2) {
+			while (j<tam2) {
 				
-				l1 = NodotoString(n1);
+				
 				l2 = NodotoString(n2);
 
-				prod[i + j] += stoul(l1) * stoul(l2);
+				prod[x + j] += stoul(l1) * stoul(l2);
 				n2 = n2->getSiguiente();
 				j++;
 
 			}
 
 			n1 = n1->getSiguiente();
-			i++;
+			x++;
 		}
-		for (int i = 0; i < xx; i++) {
+		for (int i = 0; i < (tam1 + tam2) - 1; i++) {
 		
 			numeroFinal += std::to_string(prod[i]);
 		

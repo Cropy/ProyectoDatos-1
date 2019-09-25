@@ -24,11 +24,26 @@ public:
 	T* buscar(T*);
 	void eliminarLista();
 	string Print();
-	int getTamano();
+	int cantNodos();
+	
 	~Lista();
 };
 
 
+template<class T>
+inline int Lista<T>::cantNodos()
+{
+	int tam = 0;
+	Nodo<T>* tmp = inicio;
+	if (tmp == nullptr)
+		return tam;
+	
+	while (tmp != nullptr) {
+		tam++;
+	    tmp= tmp->getSiguiente();
+	}
+	return tam;
+}
 template <class T>
 Lista<T>::Lista() {
 	tamano = 0;
@@ -38,10 +53,6 @@ Lista<T>::Lista() {
 template<class T>
 inline int Lista<T>::getTamano()
 {
-	Nodo<T>* tmp = inicio;
-	while (tmp != nullptr) {
-		tamano++;
-	}
 	return tamano;
 }
 

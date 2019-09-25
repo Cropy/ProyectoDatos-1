@@ -30,8 +30,8 @@ int main() {
 	Integer* i2 = new Integer();
 
 
-	i1->agregar("1111111111111111111111");
-	i2->agregar("2222222222222222222222");
+	i1->agregar("22223333");
+	i2->agregar("3");
 
 
 	
