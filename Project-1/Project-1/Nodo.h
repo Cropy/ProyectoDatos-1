@@ -19,7 +19,7 @@ public:
 	T* getDatos();
 	Nodo* getSiguiente();
 	void setDatos(T* dato);
-	void print();
+	string print();
 	void setSiguiente(Nodo* siguiente);
 	unsigned int pop();
 };
@@ -46,10 +46,12 @@ void Nodo<T>::setDatos(T* dato) {
 }
 
 template<class T>
-inline void Nodo<T>::print()
+inline string Nodo<T>::print()
 {
+	stringstream ss;
 	while(!datos->isEmpty())
-	cout << this->datos->pop();
+		ss << this->datos->pop();
+	return ss.str();
 
 }
 
