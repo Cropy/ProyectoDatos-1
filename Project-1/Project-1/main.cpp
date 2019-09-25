@@ -30,18 +30,15 @@ int main() {
 	Integer* i2 = new Integer();
 
 
-	i1->agregar("666688886666444466668888");
-	i2->agregar("333344443333222233334444");
+	i1->agregar("20");
+	i2->agregar("3");
 
 
 	
 
-	Integer* resultado = i1->resta(i1->getLista(), i2->getLista());
-	cout << "efsdf" << endl;
+	string g =i1->multiStack(i1->getLista()->getInicio(), i2->getLista()->getInicio());
 
-	//cout << resultado->getLista()->Print();
-	cout << *resultado;
-
+	cout << g << endl;
 
 	
 

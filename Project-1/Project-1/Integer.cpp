@@ -67,6 +67,8 @@ void Integer::agregar(string numero) {
 		if (numero.size() - i < 4 && pila->isEmpty()) {
 			auxiliar = numero.substr(i, numero.size() - i);
 			pila->push(stoul(auxiliar));
+			ListaStack->agregar(pila);
+			return;
 		}
 		if (!pila->isFull()) {
 
@@ -319,14 +321,18 @@ string Integer::multiStack(Nodo<stack>* s1, Nodo<stack>* s2)
 	stack* stack2 = s2->getDatos();
 	unsigned int multi = 0;
 	string resul;
+	string cantSumas= StacktoString(stack2);
+	string sumando = StacktoString(stack1);
 
-	while (!stack1->isEmpty() && !stack2->isEmpty()) {
+	int i = 0;
 
-		multi += stoul(StacktoString(stack1))* stoul(StacktoString(stack2));
-		resul += std::to_string(multi);
+	while (i < stoul(cantSumas)) {
+		
+		multi += stoul(sumando);
+		i++;
 	}
 
-	return resul;
+	return std::to_string(multi);
 	
 }
 
