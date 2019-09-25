@@ -61,18 +61,18 @@ public:
 	Integer& operator/=(const string&);
 
 	// Sobrecarga operadores aritmeticos
-	Integer& operator+( Integer&) ;
-	Integer operator-(const Integer&) const;
-	Integer operator*(const Integer&) const;
-	Integer operator/(const Integer&) const;
-	Integer operator+(const long long&) const;
-	Integer operator-(const long long&) const;
-	Integer operator*(const long long&) const;
-	Integer operator/(const long long&) const;
-	Integer operator+(const string&) const;
-	Integer operator-(const string&) const;
-	Integer operator*(const string&) const;
-	Integer operator/(const string&) const;
+	Integer& operator+(Integer&);
+	Integer& operator-(Integer&);
+	Integer& operator*(const Integer&) const;
+	Integer& operator/(const Integer&) const;
+	Integer& operator+(const long long&) const;
+	Integer& operator-(const long long&) const;
+	Integer& operator*(const long long&) const;
+	Integer& operator/(const long long&) const;
+	Integer& operator+(const string&) const;
+	Integer& operator-(const string&) const;
+	Integer& operator*(const string&) const;
+	Integer& operator/(const string&) const;
 
 	// Sobrecarga operadores comparacion
 	bool operator<(const Integer&) const;
@@ -96,7 +96,7 @@ public:
 
 	// Sobrecarga operadores E/S
 	friend istream& operator>>(istream&, Integer&);
-	friend ostream& operator<<(ostream&, const Integer&);
+	friend ostream& operator<<(ostream&, Integer&);
 
 	// Extras
 	string toString();

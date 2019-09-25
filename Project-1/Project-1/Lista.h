@@ -23,7 +23,7 @@ public:
 	//void eliminar(T*);
 	T* buscar(T*);
 	void eliminarLista();
-	void Print();
+	string Print();
 	~Lista();
 };
 
@@ -109,16 +109,16 @@ void Lista<T>::eliminarLista() {
 }
 
 template<class T>
-inline void Lista<T>::Print()
+inline string Lista<T>::Print()
 {
+	stringstream ss;
 	Nodo<T>* walk = inicio;
 	while (walk) 
 	{
-
-		walk->print();
+		ss << walk->print();
 		walk = walk->getSiguiente();
 	}
-
+	return ss.str();
 }
 
 

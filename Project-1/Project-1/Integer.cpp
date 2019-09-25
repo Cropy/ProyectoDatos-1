@@ -543,22 +543,25 @@ Integer& Integer::operator+(Integer& inte)
 //}
 
 //// Sobrecarga operadores E/S
-////friend istream& operator>>(istream& o, Integer& obj)
-////{
-////
-////}
-////
-////friend ostream& operator<<(ostream& o, const Integer& obj)
-////{
-////
-////}
+istream& operator>>(istream& o, Integer& obj)
+{
+	return o;
+}
+
+ostream& operator<<(ostream& o, Integer& obj)
+{
+	o << obj.toString();
+	return o;
+}
 
 //// Extras
-//string Integer::toString()
-//{
-//
-//}
-//
+string Integer::toString()
+{
+	stringstream ss;
+	ss << ListaStack->Print();
+	return ss.str();
+}
+
 //Integer Integer::parse(string)
 //{
 //

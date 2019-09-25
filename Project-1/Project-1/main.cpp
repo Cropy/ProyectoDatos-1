@@ -59,8 +59,8 @@ int main() {
 	Integer* resultado = i1->resta(i1->getLista(), i2->getLista());
 	cout << "efsdf" << endl;
 
-	resultado->getLista()->Print();
-
+	//cout << resultado->getLista()->Print();
+	cout << *resultado;
 
 
 	
