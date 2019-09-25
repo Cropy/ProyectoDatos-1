@@ -20,6 +20,7 @@ class Integer {
 private:
 	Lista<stack>* ListaStack;
 	char signo;
+	int tamPalabra;
 public:
 	// Constructores y Destructor
 	Integer();
@@ -27,6 +28,7 @@ public:
 	Integer(const long long&);
 	Integer(const string&);
 	~Integer();
+	int getTamPalabra();
 
 	// Sets y Gets
 	char get_signo();
@@ -45,7 +47,7 @@ public:
 	string multiStack(Nodo<stack>* s, Nodo<stack>* s1);
 
 	
-	Integer* multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2);
+	Integer* multiplicacion(Integer* Integer1, Integer* Integer2);
 
 	// Sobrecarga operadores asignacion
 	Integer& operator =(const Integer&);

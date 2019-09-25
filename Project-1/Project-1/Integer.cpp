@@ -5,6 +5,7 @@ Integer::Integer()
 {
 	ListaStack = new Lista<stack>();
 	signo = ' ';
+	tamPalabra = 0;
 }
 //
 //Integer::Integer(const Integer&)
@@ -22,6 +23,11 @@ Integer::Integer()
 //Integer::~Integer()
 //{
 //}
+
+int Integer::getTamPalabra()
+{
+	return tamPalabra;
+}
 
 // Sets y Gets
 char Integer::get_signo()
@@ -46,6 +52,7 @@ void Integer::setLista(Lista<stack>* lista)
 
 // Metodos
 void Integer::agregar(string numero) {
+	tamPalabra = numero.length();
 	int tam = 3;
 	stack* pila = nullptr;
 	string auxiliar;
@@ -338,49 +345,77 @@ string Integer::restaStack(Nodo<stack>* s1, Nodo<stack>* s2) {
 //	
 //}
 
-Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
+Integer* Integer::multiplicacion(Integer* Int1, Integer* Int2)
 {
-	Nodo<stack>* n1=lista1->getInicio();
-	Nodo<stack>* n2= lista2->getInicio();
-	string  l1, l2;
-	int x = 0;
-    int j = 0;
-	int tam1 = lista1->cantNodos();
-	int tam2 = lista2->cantNodos();
-
 	Integer* resultado = new Integer();
+	int tamList1 = Int1->getLista()->cantNodos();
+	int tamList2 = Int2->getLista()->cantNodos();
+	int tamNum1 = Int1->getTamPalabra();
+	int tamNum2 = Int2->getTamPalabra();
+    int* prod = new int[(tamNum1+tamNum2) - 1];
+	int tamVec1 = tamList1 * 3;
+	int tamVec2 = tamList2 * 3;
 	string numeroFinal;
 
-	
-		unsigned int* prod = new unsigned  int[(tam1+tam2)-1];
+	unsigned int* vec1 = new unsigned int[tamVec1];
+	unsigned int* vec2 = new unsigned int[tamVec2];
+	Nodo<stack>* n1 = Int1->getLista()->getInicio();
+	Nodo<stack>* n2 = Int2->getLista()->getInicio();
 
-		// Initialize the porduct polynomial 
-		for (int i = 0; i < (tam1 + tam2) - 1; i++)
-			prod[i] = 0;
 
-		// Multiply two polynomials term by term 
-
-		// Take ever term of first polynomial 
-		while (x<tam1)
+	while (n1) {
+		unsigned int x = 0;
+		stack* aux = n1->getDatos();
+		int i = 0;
+		
+		while (!aux->isEmpty() && i< tamList1 * 3)
 		{
-			l1 = NodotoString(n1);
-			// Multiply the current term of first polynomial 
-			// with every term of second polynomial. 
-			while (j<tam2) {
-				
-				
-				l2 = NodotoString(n2);
-
-				prod[x + j] += stoul(l1) * stoul(l2);
-				n2 = n2->getSiguiente();
-				j++;
-
-			}
-
-			n1 = n1->getSiguiente();
-			x++;
+			x= aux->pop();
+			
+			vec1[i] = x;
+			i++;
 		}
-		for (int i = 0; i < (tam1 + tam2) - 1; i++) {
+		n1 = n1->getSiguiente();
+	}
+
+	while (n2 ) {
+		unsigned int x = 0;
+		stack* aux = n2->getDatos();
+		int i = 0;
+
+		while (!aux->isEmpty()&&  i< tamList2 * 3)
+		{
+			x=aux->pop();
+			vec2[i] = x;
+			i++;
+
+		}
+		n2 = n2->getSiguiente();
+
+	}
+	// Initialize the porduct polynomial 
+	for (int i = 0; i < (tamNum1 + tamNum2) - 1; i++)
+		prod[i] = 0;
+
+	// Multiply two polynomials term by term 
+
+	// Take ever term of first polynomial 
+	for (int i = 0; i < tamVec1; i++)
+	{
+		unsigned int x = 0;
+		int n1 = 0;
+		int n2 = 0;
+		// Multiply the current term of first polynomial 
+		// with every term of second polynomial. 
+		for (int j = 0; j < tamVec2; j++) {
+			n1 = vec1[i];
+			n2=vec2[j];
+			x = n1*n2;
+			prod[i + j] = prod[i + j]+x;
+		}
+	}
+
+	for (int i = 0; i < (tamNum1 + tamNum2)-1; i++) {
 		
 			numeroFinal += std::to_string(prod[i]);
 		
@@ -390,9 +425,53 @@ Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 
 		return resultado;
 	
-	
-	}
-	
+
+}
+
+
+// Initialize the porduct polynomial 
+		//for (int i = 0; i < (tam1 + tam2) - 1; i++)
+		//	prod[i] = 0;
+
+		//// Multiply two polynomials term by term 
+
+		//// Take ever term of first polynomial 
+		//while (x<tam1)
+		//{
+		//	l1 = NodotoString(n1);
+		//	// Multiply the current term of first polynomial 
+		//	// with every term of second polynomial. 
+		//	while (j<tam2) {
+		//		
+		//		
+		//		l2 = NodotoString(n2);
+
+		//		prod[x + j] += stoul(l1) * stoul(l2);
+		//		n2 = n2->getSiguiente();
+		//		j++;
+
+		//	}
+
+		//	n1 = n1->getSiguiente();
+		//	x++;
+		//}
+		//for (int i = 0; i < (tam1 + tam2) - 1; i++) {
+		//
+		//	numeroFinal += std::to_string(prod[i]);
+		//
+		//}
+
+		//resultado->agregar(numeroFinal);
+
+		//return resultado;
+
+
+
+
+
+
+
+
 
 
 //// Sobrecarga operadores asignacion

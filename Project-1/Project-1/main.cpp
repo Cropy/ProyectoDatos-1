@@ -36,7 +36,7 @@ int main() {
 
 	
 
-     Integer* g= i1->multiplicacion(i1->getLista(), i2->getLista());
+     Integer* g= i1->multiplicacion(i1, i2);
 
 	cout << *g << endl;
 
