@@ -42,6 +42,10 @@ public:
 	string NodotoString(Nodo<stack>* s);
 	string sumaStack(Nodo<stack>* s, Nodo<stack>* s1);
 	string restaStack(Nodo<stack>* s, Nodo<stack>* s1);
+	string multiStack(Nodo<stack>* s, Nodo<stack>* s1);
+
+	
+	Integer* multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2);
 
 	// Sobrecarga operadores asignacion
 	Integer& operator =(const Integer&);
