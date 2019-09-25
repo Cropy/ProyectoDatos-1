@@ -340,7 +340,7 @@ Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 {
 	Integer* resultado = new Integer(); // valor a retonar
 
-	string mutilR; // va concatenado valores 
+	string multiM; // va concatenado valores 
 	bool bandera = false;// evitar al if en la linea 102
 	stack* stack1 = nullptr; // guarda el stack de la lista 1;
 	stack* stack2 = nullptr; // guarda el stack de la lista 2;
@@ -357,7 +357,7 @@ Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 		nodo1 = lista1->getInicio();
 		while (nodo1 != nullptr)
 		{
-			mutilR += NodotoString(nodo1);
+			multiM += NodotoString(nodo1);
 			nodo1 = nodo1->getSiguiente();
 		}
 		bandera = true;
@@ -370,7 +370,7 @@ Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 		nodo2 = lista2->getInicio();
 		while (nodo2 != nullptr)
 		{
-			mutilR += NodotoString(nodo2);
+			multiM += NodotoString(nodo2);
 			nodo2 = nodo1->getSiguiente();
 		}
 		bandera = true;
@@ -387,7 +387,7 @@ Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 		while (nodo1 != nullptr && nodo2 != nullptr) // en el momento que una lista sea mas larga que la otra para
 		{
 
-			mutilR += restaStack(nodo1, nodo2);
+			multiM += multiStack(nodo1, nodo2);
 			nodo1 = nodo1->getSiguiente();
 			nodo2 = nodo2->getSiguiente();
 
@@ -401,7 +401,7 @@ Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 		while (nodo1 != nullptr)
 		{
 			n1 = stoul(NodotoString(nodo1));
-			mutilR += std::to_string(n1);
+			multiM += std::to_string(n1);
 			nodo1 = nodo1->getSiguiente();
 
 		}
@@ -412,18 +412,15 @@ Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
 		while (nodo2 != nullptr)
 		{
 			n2 = stoul(NodotoString(nodo2));
-			mutilR += std::to_string(n2);
+			multiM += std::to_string(n2);
 			nodo2 = nodo1->getSiguiente();
 
 		}
 	}
 
-	resultado->agregar(mutilR); //agrega el String a la lista del la variable a retonar
+	resultado->agregar(multiM); //agrega el String a la lista del la variable a retonar
 	return resultado;
 
-
-
-	
 }
 
 //// Sobrecarga operadores asignacion

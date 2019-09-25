@@ -30,7 +30,7 @@ int main() {
 	Integer* i2 = new Integer();
 
 
-	i1->agregar("20");
+	i1->agregar("20000");
 	i2->agregar("3");
 
 
