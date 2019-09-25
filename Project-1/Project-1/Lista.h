@@ -24,8 +24,10 @@ public:
 	T* buscar(T*);
 	void eliminarLista();
 	string Print();
+	int getTamano();
 	~Lista();
 };
+
 
 template <class T>
 Lista<T>::Lista() {
@@ -36,6 +38,10 @@ Lista<T>::Lista() {
 template<class T>
 inline int Lista<T>::getTamano()
 {
+	Nodo<T>* tmp = inicio;
+	while (tmp != nullptr) {
+		tamano++;
+	}
 	return tamano;
 }
 
