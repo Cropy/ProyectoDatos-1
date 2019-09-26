@@ -42,72 +42,37 @@ public:
 	string NodotoString(Nodo<stack>* s);
 	string sumaStack(Nodo<stack>* s, Nodo<stack>* s1);
 	string restaStack(Nodo<stack>* s, Nodo<stack>* s1);
-	string multiStack(Nodo<stack>* s, Nodo<stack>* s1);
+	//string multiStack(Nodo<stack>* s, Nodo<stack>* s1);
 
-	
-	Integer* multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2);
+	//
+	//Integer* multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2);
 
 	// Sobrecarga operadores asignacion
-	Integer& operator =(const Integer&);
-	Integer& operator+=(const Integer&);
-	Integer& operator-=(const Integer&);
-	Integer& operator*=(const Integer&);
-	Integer& operator/=(const Integer&);
-	Integer& operator =(const long long&);
-	Integer& operator+=(const long long&);
-	Integer& operator-=(const long long&);
-	Integer& operator*=(const long long&);
-	Integer& operator/=(const long long&);
-	Integer& operator =(const string&);
-	Integer& operator+=(const string&);
-	Integer& operator-=(const string&);
-	Integer& operator*=(const string&);
-	Integer& operator/=(const string&);
+	Integer& operator=(Integer&);
+	Integer& operator+=(Integer&);
+	Integer& operator-=(Integer&);
+	//Integer& operator*=(Integer&);
+	//Integer& operator/=(Integer&);
 
 	// Sobrecarga operadores aritmeticos
 	Integer& operator+(Integer&);
 	Integer& operator-(Integer&);
-	Integer& operator*(const Integer&) const;
-	Integer& operator/(const Integer&) const;
-	Integer& operator+(const long long&) const;
-	Integer& operator-(const long long&) const;
-	Integer& operator*(const long long&) const;
-	Integer& operator/(const long long&) const;
-	Integer& operator+(const string&) const;
-	Integer& operator-(const string&) const;
-	Integer& operator*(const string&) const;
-	Integer& operator/(const string&) const;
+	//Integer& operator*(Integer&);
+	//Integer& operator/(Integer&);
 
-	// Sobrecarga operadores comparacion
-	bool operator<(const Integer&) const;
-	bool operator>(const Integer&) const;
-	bool operator<=(const Integer&) const;
-	bool operator>=(const Integer&) const;
-	bool operator==(const Integer&) const;
-	bool operator!=(const Integer&) const;
-	bool operator<(const long long&) const;
-	bool operator>(const long long&) const;
-	bool operator<=(const long long&) const;
-	bool operator>=(const long long&) const;
-	bool operator==(const long long&) const;
-	bool operator!=(const long long&) const;
-	bool operator<(const string&) const;
-	bool operator>(const string&) const;
-	bool operator<=(const string&) const;
-	bool operator>=(const string&) const;
-	bool operator==(const string&) const;
-	bool operator!=(const string&) const;
+	//// Sobrecarga operadores comparacion
+	//bool operator<(Integer&);
+	//bool operator>(Integer&);
+	//bool operator<=(Integer&);
+	//bool operator>=(Integer&);
+	//bool operator==(Integer&);
+	//bool operator!=(Integer&);
 
 	// Sobrecarga operadores E/S
-	friend istream& operator>>(istream&, Integer&);
 	friend ostream& operator<<(ostream&, Integer&);
 
 	// Extras
 	string toString();
 	Integer parse(string hilera);
-	/*string to_string() const;
-	int to_int() const;
-	long to_long() const;
-	long long to_long_long() const;*/
 };
 #endif // !INTEGER_H

@@ -24,7 +24,6 @@ public:
 	T* buscar(T*);
 	void eliminarLista();
 	string Print();
-	int getTamano();
 	~Lista();
 };
 
