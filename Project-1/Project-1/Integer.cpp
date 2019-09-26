@@ -394,7 +394,7 @@ Integer* Integer::multiplicacion(Integer* Int1, Integer* Int2)
 		      
 			 string s=std::to_string(multi); // recortar desde n-1 hasta tam;
 
-			 CorteString(s, aux2, std::to_string(num1));
+			 /*CorteString(s, aux2, std::to_string(num1));*/
 			 s = s + aux2; // desde 0 (tam-n)-1
 			 aux2 = s;
 			 nodo2 = nodo2->getSiguiente();
