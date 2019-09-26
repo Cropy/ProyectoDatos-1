@@ -26,19 +26,28 @@ int main() {
 
 
 
-	Integer *i1 = new Integer();
+	Integer* i1 = new Integer();
 	Integer* i2 = new Integer();
-
-
-	i1->agregar("22223333");
-	i2->agregar("3");
-
+	Integer* i3 = new Integer();
 
 	
+	i1->agregar("1111111111111111111111111111111111111111111111111111111111111111");
+	i2->agregar("2222222222222222222222222222222222222222222222222222222222222222");
 
-     Integer* g= i1->multiplicacion(i1, i2);
 
-	cout << *g << endl;
+	//cout << *i1 << endl;
+
+	//i3 = i1;
+
+	*i3 =  *i2 - *i1;
+
+
+	cout << *i3 << endl;
+	
+
+     /*Integer* g= i1->multiplicacion(i1->getLista(), i2->getLista());*/
+
+	//cout << *g << endl;
 
 	
 

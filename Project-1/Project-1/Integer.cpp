@@ -5,28 +5,22 @@ Integer::Integer()
 {
 	ListaStack = new Lista<stack>();
 	signo = ' ';
-	tamPalabra = 0;
 }
-//
-//Integer::Integer(const Integer&)
-//{
-//}
-//
-//Integer::Integer(const long long&)
-//{
-//}
-//
-//Integer::Integer(const string&)
-//{
-//}
-//
-//Integer::~Integer()
-//{
-//}
 
-int Integer::getTamPalabra()
+Integer::Integer(const Integer&)
 {
-	return tamPalabra;
+}
+
+Integer::Integer(const long long&)
+{
+}
+
+Integer::Integer(const string&)
+{
+}
+
+Integer::~Integer()
+{
 }
 
 // Sets y Gets
@@ -52,8 +46,6 @@ void Integer::setLista(Lista<stack>* lista)
 
 // Metodos
 void Integer::agregar(string numero) {
-	tamPalabra = numero.length();
-	int tam = 3;
 	stack* pila = nullptr;
 	string auxiliar;
 	bool bandera = false;
@@ -68,11 +60,11 @@ void Integer::agregar(string numero) {
 		}
 		bandera = true;
 	}
-	for (int i = 0; i < numero.size(); i += tam) {
+	for (int i = 0; i < numero.size(); i += 4) {
 		if (pila == nullptr) {
 			pila = new stack();
 		}
-		if (numero.size() - i < tam && pila->isEmpty()) {
+		if (numero.size() - i < 4 && pila->isEmpty()) {
 			auxiliar = numero.substr(i, numero.size() - i);
 			pila->push(stoul(auxiliar));
 			ListaStack->agregar(pila);
@@ -80,15 +72,14 @@ void Integer::agregar(string numero) {
 		}
 		if (!pila->isFull()) {
 
-			if (numero.size() - i <= tam) {
+			if (numero.size() - i <= 4) {
 				auxiliar = numero.substr(i, numero.size() - i);
 				pila->push(stoul(auxiliar));
 				ListaStack->agregar(pila);
-				return;
 
 			}
 			else {
-				auxiliar = numero.substr(i, tam);
+				auxiliar = numero.substr(i, 4);
 				pila->push(stoul(auxiliar));
 			}
 			cout << "Agregando a pila " << endl;
@@ -123,44 +114,44 @@ Integer* Integer::suma(Lista<stack>* lista1, Lista<stack>* lista2)
 
 	if (lista1->getTamano() != 0 && lista2->getTamano() == 0) // si la lista1 tiene elementos y la lista2 = 0
 	{
-		nodo1 = lista1->getInicio();
-		while (nodo1 != nullptr) 
-		{
-			sumaS += NodotoString(nodo1);
-			nodo1 = nodo1->getSiguiente();
-		}
-		bandera = true;
+		//nodo1 = lista1->getInicio();
+		//while (nodo1 != nullptr) 
+		//{
+		//	sumaS += NodotoString(nodo1);
+		//	nodo1 = nodo1->getSiguiente();
+		//}
+		//bandera = true;
 
-	}
-			
-	if (lista1->getTamano() == 0 && lista2->getTamano() != 0) // si la lista2 tiene elementos y la lista1 = 0
-	{
+	//}
+	//		
+	//if (lista1->getTamano() == 0 && lista2->getTamano() != 0) // si la lista2 tiene elementos y la lista1 = 0
+	//{
 
-		nodo2 = lista2->getInicio();
-		while (nodo2 != nullptr)
-		{
-			sumaS += NodotoString(nodo2);
-			nodo2 = nodo1->getSiguiente();
-		}
-		bandera = true;
+	//	nodo2 = lista2->getInicio();
+	//	while (nodo2 != nullptr)
+	//	{
+	//		sumaS += NodotoString(nodo2);
+	//		nodo2 = nodo1->getSiguiente();
+	//	}
+	//	bandera = true;
 
 
-	}
-	
+	//}
 
-	if(!bandera ) { // si NO ENTRO  a los metodos anteriores
 
-		nodo1 = lista1->getInicio();
-		nodo2 = lista2->getInicio();
+		if (!bandera) { // si NO ENTRO  a los metodos anteriores
 
-		while (nodo1 != nullptr && nodo2 != nullptr) // en el momento que una lista sea mas larga que la otra para
-		{
-			
-			sumaS += sumaStack(nodo1, nodo2);
-			nodo1 = nodo1->getSiguiente();
-			nodo2 = nodo2->getSiguiente();
+			nodo1 = lista1->getInicio();
+			nodo2 = lista2->getInicio();
 
-		}
+			while (nodo1 != nullptr && nodo2 != nullptr) // en el momento que una lista sea mas larga que la otra para
+			{
+
+				sumaS += sumaStack(nodo1, nodo2);
+				nodo1 = nodo1->getSiguiente();
+				nodo2 = nodo2->getSiguiente();
+
+			}
 
 
 		}
@@ -169,7 +160,7 @@ Integer* Integer::suma(Lista<stack>* lista1, Lista<stack>* lista2)
 		{
 			while (nodo1 != nullptr)
 			{
-				n1= stoul(NodotoString(nodo1));
+				n1 = stoul(NodotoString(nodo1));
 				sumaS += std::to_string(n1);
 				nodo1 = nodo1->getSiguiente();
 
@@ -189,62 +180,58 @@ Integer* Integer::suma(Lista<stack>* lista1, Lista<stack>* lista2)
 
 		resultado->agregar(sumaS); //agrega el String a la lista del la variable a retonar
 		return resultado;
+	}
 }
 
-Integer* Integer::resta(Lista<stack>* lista1, Lista<stack>* lista2) {
-	Integer* resultado = new Integer(); // valor a retonar
+	Integer* Integer::resta(Lista<stack> * lista1, Lista<stack> * lista2) {
+		Integer* resultado = new Integer(); // valor a retonar
 
-	string restaR; // va concatenado valores 
-	bool bandera = false;// evitar al if en la linea 102
-	stack* stack1 = nullptr; // guarda el stack de la lista 1;
-	stack* stack2 = nullptr; // guarda el stack de la lista 2;
+		string restaR; // va concatenado valores 
+		bool bandera = false;// evitar al if en la linea 102
+		stack* stack1 = nullptr; // guarda el stack de la lista 1;
+		stack* stack2 = nullptr; // guarda el stack de la lista 2;
 
-	unsigned int n1 = 0; //convirtes 
-	unsigned int n2 = 0;
-	unsigned int resul = 0;
+		unsigned int n1 = 0; //convirtes 
+		unsigned int n2 = 0;
+		unsigned int resul = 0;
 
-	Nodo<stack>* nodo1 = new Nodo<stack>(); // guarda el nodo de la lista1 para recorrer
-	Nodo<stack>* nodo2 = new Nodo<stack>(); // guarda el nodo de la lista2 para recorrer
+		Nodo<stack>* nodo1 = new Nodo<stack>(); // guarda el nodo de la lista1 para recorrer
+		Nodo<stack>* nodo2 = new Nodo<stack>(); // guarda el nodo de la lista2 para recorrer
 
-	if (lista1->getTamano() != 0 && lista2->getTamano() == 0) // si la lista1 tiene elementos y la lista2 = 0
-	{
-		nodo1 = lista1->getInicio();
-		while (nodo1 != nullptr)
-		{
-			restaR += NodotoString(nodo1);
-			nodo1 = nodo1->getSiguiente();
-		}
-		bandera = true;
+		//if (lista1->getTamano() != 0 && lista2->getTamano() == 0) // si la lista1 tiene elementos y la lista2 = 0
+		//{
+		//	nodo1 = lista1->getInicio();
+		//	while (nodo1 != nullptr)
+		//	{
+		//		restaR += NodotoString(nodo1);
+		//		nodo1 = nodo1->getSiguiente();
+		//	}
+		//	bandera = true;
 
-	}
+		//}
 
-	if (lista1->getTamano() == 0 && lista2->getTamano() != 0) // si la lista2 tiene elementos y la lista1 = 0
-	{
+		//if (lista1->getTamano() == 0 && lista2->getTamano() != 0) // si la lista2 tiene elementos y la lista1 = 0
+		//{
 
-		nodo2 = lista2->getInicio();
-		while (nodo2 != nullptr)
-		{
-			restaR += NodotoString(nodo2);
-			nodo2 = nodo1->getSiguiente();
-		}
-		bandera = true;
-
-
-	}
+		//	nodo2 = lista2->getInicio();
+		//	while (nodo2 != nullptr)
+		//	{
+		//		restaR += NodotoString(nodo2);
+		//		nodo2 = nodo1->getSiguiente();
+		//	}
+		//	bandera = true;
 
 
-	if (!bandera) { // si NO ENTRO  a los metodos anteriores
+	//}
 
-		nodo1 = lista1->getInicio();
-		nodo2 = lista2->getInicio();
-
+		if (!bandera) { // si NO ENTRO  a los metodos anteriores
+			nodo1 = lista1->getInicio();
+			nodo2 = lista2->getInicio();
 		while (nodo1 != nullptr && nodo2 != nullptr) // en el momento que una lista sea mas larga que la otra para
 		{
-
 			restaR += restaStack(nodo1, nodo2);
 			nodo1 = nodo1->getSiguiente();
 			nodo2 = nodo2->getSiguiente();
-
 		}
 
 
@@ -276,14 +263,15 @@ Integer* Integer::resta(Lista<stack>* lista1, Lista<stack>* lista2) {
 	return resultado;
 }
 
+
 string Integer::StacktoString(stack* s)  // concatena los numeros de unStack en un String
 {
-	
+	unsigned int suma = 0;
 	string resultado;
 	while (!s->isEmpty()) {
-		resultado += std::to_string(s->pop());
+		suma += s->pop();
 	}
-	
+	resultado = std::to_string(suma);
 
 	return resultado;
 }
@@ -333,7 +321,7 @@ string Integer::restaStack(Nodo<stack>* s1, Nodo<stack>* s2) {
 //	string cantSumas= StacktoString(stack2);
 //	string sumando = StacktoString(stack1);
 //
-//	unsigned int i = 0;
+//	int i = 0;
 //
 //	while (i < stoul(cantSumas)) {
 //		
@@ -345,364 +333,138 @@ string Integer::restaStack(Nodo<stack>* s1, Nodo<stack>* s2) {
 //	
 //}
 
-Integer* Integer::multiplicacion(Integer* Int1, Integer* Int2)
-{
-	Integer* resultado = new Integer();
-	int tamList1 = Int1->getLista()->cantNodos();
-	int tamList2 = Int2->getLista()->cantNodos();
-	int tamNum1 = Int1->getTamPalabra();
-	int tamNum2 = Int2->getTamPalabra();
-    int* prod = new int[(tamNum1+tamNum2) - 1];
-	int tamVec1 = tamList1 * 3;
-	int tamVec2 = tamList2 * 3;
-	string numeroFinal;
-
-	unsigned int* vec1 = new unsigned int[tamVec1];
-	unsigned int* vec2 = new unsigned int[tamVec2];
-	Nodo<stack>* n1 = Int1->getLista()->getInicio();
-	Nodo<stack>* n2 = Int2->getLista()->getInicio();
-
-
-	while (n1) {
-		unsigned int x = 0;
-		stack* aux = n1->getDatos();
-		int i = 0;
-		
-		while (!aux->isEmpty() && i< tamList1 * 3)
-		{
-			x= aux->pop();
-			
-			vec1[i] = x;
-			i++;
-		}
-		n1 = n1->getSiguiente();
-	}
-
-	while (n2 ) {
-		unsigned int x = 0;
-		stack* aux = n2->getDatos();
-		int i = 0;
-
-		while (!aux->isEmpty()&&  i< tamList2 * 3)
-		{
-			x=aux->pop();
-			vec2[i] = x;
-			i++;
-
-		}
-		n2 = n2->getSiguiente();
-
-	}
-	// Initialize the porduct polynomial 
-	for (int i = 0; i < (tamNum1 + tamNum2) - 1; i++)
-		prod[i] = 0;
-
-	// Multiply two polynomials term by term 
-
-	// Take ever term of first polynomial 
-	for (int i = 0; i < tamVec1; i++)
-	{
-		unsigned int x = 0;
-		int n1 = 0;
-		int n2 = 0;
-		// Multiply the current term of first polynomial 
-		// with every term of second polynomial. 
-		for (int j = 0; j < tamVec2; j++) {
-			n1 = vec1[i];
-			n2=vec2[j];
-			x = n1*n2;
-			prod[i + j] = prod[i + j]+x;
-		}
-	}
-
-	for (int i = 0; i < (tamNum1 + tamNum2)-1; i++) {
-		
-			numeroFinal += std::to_string(prod[i]);
-		
-		}
-
-		resultado->agregar(numeroFinal);
-
-		return resultado;
-	
-
-}
-
-
-// Initialize the porduct polynomial 
-		//for (int i = 0; i < (tam1 + tam2) - 1; i++)
-		//	prod[i] = 0;
-
-		//// Multiply two polynomials term by term 
-
-		//// Take ever term of first polynomial 
-		//while (x<tam1)
-		//{
-		//	l1 = NodotoString(n1);
-		//	// Multiply the current term of first polynomial 
-		//	// with every term of second polynomial. 
-		//	while (j<tam2) {
-		//		
-		//		
-		//		l2 = NodotoString(n2);
-
-		//		prod[x + j] += stoul(l1) * stoul(l2);
-		//		n2 = n2->getSiguiente();
-		//		j++;
-
-		//	}
-
-		//	n1 = n1->getSiguiente();
-		//	x++;
-		//}
-		//for (int i = 0; i < (tam1 + tam2) - 1; i++) {
-		//
-		//	numeroFinal += std::to_string(prod[i]);
-		//
-		//}
-
-		//resultado->agregar(numeroFinal);
-
-		//return resultado;
-
-
-
-
-
-
-
-
-
+//Integer* Integer::multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2)
+//{
+//	Nodo<stack>* n1=lista1->getInicio();
+//	Nodo<stack>* n2= lista2->getInicio();
+//	string  l1, l2;
+//	int i, j = 0;
+//	Integer* resultado = new Integer();
+//	string numeroFinal;
+//
+//	int xx = 10;
+//		unsigned int* prod = new unsigned  int[/*m + n - 1*/xx];
+//
+//		// Initialize the porduct polynomial 
+//		for (int i = 0; i < xx - 1; i++)
+//			prod[i] = 0;
+//
+//		// Multiply two polynomials term by term 
+//
+//		// Take ever term of first polynomial 
+//		while (n1)
+//		{
+//			
+//			// Multiply the current term of first polynomial 
+//			// with every term of second polynomial. 
+//			while (n2) {
+//				
+//				l1 = NodotoString(n1);
+//				l2 = NodotoString(n2);
+//
+//				prod[i + j] += stoul(l1) * stoul(l2);
+//				n2 = n2->getSiguiente();
+//				j++;
+//
+//			}
+//
+//			n1 = n1->getSiguiente();
+//			i++;
+//		}
+//		for (int i = 0; i < xx; i++) {
+//		
+//			numeroFinal += std::to_string(prod[i]);
+//		
+//		}
+//
+//		resultado->agregar(numeroFinal);
+//
+//		return resultado;
+//	
+//	
+//	}
 
 //// Sobrecarga operadores asignacion
-//Integer& Integer::operator =(const Integer& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator+=(const Integer& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator-=(const Integer& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator*=(const Integer& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator/=(const Integer& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator =(const long long& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator+=(const long long& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator-=(const long long& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator*=(const long long& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator/=(const long long& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator =(const string& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator+=(const string& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator-=(const string& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator*=(const string& inte)
-//{
-//
-//}
-//
-//Integer& Integer::operator/=(const string& inte)
-//{
-//
-//}
 
-//// Sobrecarga operadores aritmeticos
-//Integer Integer::operator+(const Integer& inte) const
-//{
-//
-//}
-//
-//Integer Integer::operator-(const Integer& inte) const
-//{
-//
-//}
-//
-//Integer Integer::operator*(const Integer& inte) const
-//{
-//
-//}
-//
-//Integer Integer::operator/(const Integer& inte) const
-//{
-//
-//}
-//
-//Integer Integer::operator+(const long long& inte) const
-//{
-//
-//}
-//
-//Integer Integer::operator-(const long long& inte) const
-//{
-//
-//}
-//
-//Integer Integer::operator*(const long long& inte) const
-//{
-//
-//}
-//
-//Integer Integer::operator/(const long long& inte) const
-//{
-//
-//}
-
-Integer& Integer::operator+(Integer& inte) 
+Integer& Integer:: operator =(Integer& x)
 {
-	
-	return *suma(this->getLista(), inte.getLista());
-
+	if (this != &x) {
+		if (x.getLista() != nullptr)
+			this->setLista(x.ListaStack);
+		if (x.get_signo() != '\0')
+			this->set_signo(x.signo);
+	}
+	return *this;
 }
 
-//Integer Integer::operator-(const string& inte) const
+
+Integer& Integer::operator+=(Integer& x)
+{
+	//if (this == &x) {
+		return x = *suma(this->getLista(), x.getLista());
+	//}
+}
+
+Integer& Integer::operator-=(Integer& x)
+{
+	return x = *resta(this->getLista(), x.getLista());
+}
+
+
+
+// Sobrecarga operadores aritmeticos
+Integer& Integer::operator+(Integer& inte)
+{
+	//this->suma(this->getLista(), inte.getLista()) + inte.suma(inte.);
+	return *this->suma(this->getLista(), inte.getLista());
+	//return *this;
+}
+
+Integer& Integer::operator-(Integer& inte)
+{
+	return *this->resta(this->getLista(), inte.getLista());
+}
+
+//Integer& Integer::operator*(Integer&)
 //{
-//
+//	// TODO: insertar una instrucción return aquí
 //}
 //
-//Integer Integer::operator*(const string& inte) const
+//Integer& Integer::operator/(Integer&)
 //{
-//
+//	// TODO: insertar una instrucción return aquí
 //}
 //
-//Integer Integer::operator/(const string& inte) const
+//bool Integer::operator<(Integer&)
 //{
+//	return false;
+//}
 //
+//bool Integer::operator>(Integer&)
+//{
+//	return false;
+//}
+//
+//bool Integer::operator<=(Integer&)
+//{
+//	return false;
+//}
+//
+//bool Integer::operator>=(Integer&)
+//{
+//	return false;
+//}
+//
+//bool Integer::operator==(Integer&)
+//{
+//	return false;
+//}
+//
+//bool Integer::operator!=(Integer&)
+//{
+//	return false;
 //}
 
-//// Sobrecarga operadores comparacion
-//bool Integer::operator<(const Integer& inte) const
-//{
-//
-//}
-//
-//bool Integer::operator>(const Integer&) const
-//{
-//
-//}
-//
-//bool Integer::operator<=(const Integer& inte) const
-//{
-//
-//}
-//
-//bool Integer::operator>=(const Integer& inte) const
-//{
-//
-//}
-//
-//bool Integer::operator==(const Integer& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator!=(const Integer& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator<(const long long& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator>(const long long& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator<=(const long long& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator>=(const long long& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator==(const long long& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator!=(const long long& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator<(const string& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator>(const string& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator<=(const string& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator>=(const string& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator==(const string& inte) const
-//{
-//
-//}
-//
-//bool  Integer::operator!=(const string& inte) const
-//{
-//
-//}
 
 //// Sobrecarga operadores E/S
 istream& operator>>(istream& o, Integer& obj)
@@ -724,12 +486,9 @@ string Integer::toString()
 	return ss.str();
 }
 
-//Integer Integer::parse(string)
-//{
-//
-//}
+Integer Integer::parse(string hilera)
+{
+	return Integer();
+}
 
-/*string to_string() const;
-int to_int() const;
-long to_long() const;
-long long to_long_long() const;*/
+
