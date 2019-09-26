@@ -28,6 +28,7 @@ public:
 	int size();
 	bool isEmpty();
 	bool isFull();
+	stack* invertirPila(stack * s1);
 };
 #endif STACK_H
 

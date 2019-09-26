@@ -63,3 +63,13 @@ bool stack::isFull()
 {
 	return top == capacity - 1;	// or return size() == capacity;
 }
+
+stack* stack::invertirPila(stack* s1)
+{
+	stack *nueva = new stack();
+
+	while (!s1->isEmpty()) {
+		nueva->push(s1->pop());
+	}
+	return nueva;
+}

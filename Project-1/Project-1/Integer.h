@@ -36,16 +36,19 @@ public:
 
 	//Metodos
 	void agregar(string numero);
-	Integer* suma(Lista<stack>* lista1, Lista<stack>* lista2);
+	Integer* suma(Integer*, Integer*);
 	Integer* resta(Lista<stack>* lista1, Lista<stack>* lista2);
-	string StacktoString(stack* s);
+	string SumaStack(stack* s);
+	string SumarNodo(Nodo<stack>* s);
 	string NodotoString(Nodo<stack>* s);
 	string sumaStack(Nodo<stack>* s, Nodo<stack>* s1);
 	string restaStack(Nodo<stack>* s, Nodo<stack>* s1);
-	//string multiStack(Nodo<stack>* s, Nodo<stack>* s1);
+	string multiStack(Nodo<stack>* s, Nodo<stack>* s1);
 
-	//
-	//Integer* multiplicacion(Lista<stack>* lista1, Lista<stack>* lista2);
+	string CorteString(string s1, string s2, string n);
+
+	
+	Integer* multiplicacion(Integer* , Integer* s);
 
 	// Sobrecarga operadores asignacion
 	Integer& operator=(Integer&);

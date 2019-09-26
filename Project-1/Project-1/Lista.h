@@ -40,6 +40,7 @@ inline int Lista<T>::getTamano()
 	Nodo<T>* tmp = inicio;
 	while (tmp != nullptr) {
 		tamano++;
+		tmp = tmp->getSiguiente();
 	}
 	return tamano;
 }
@@ -117,10 +118,13 @@ template<class T>
 inline string Lista<T>::Print()
 {
 	stringstream ss;
-	Nodo<T>* walk = inicio;
+	Nodo<T>* walk = inicio->reverse(inicio);
+	string x;
 	while (walk) 
 	{
-		ss << walk->print();
+
+		x= walk->print();
+		ss << x;
 		walk = walk->getSiguiente();
 	}
 	return ss.str();

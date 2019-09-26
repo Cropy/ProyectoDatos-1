@@ -16,6 +16,7 @@ private:
 	Nodo<T>* siguiente;
 public:
 	Nodo();
+	Nodo* reverse(Nodo* list);
 	T* getDatos();
 	Nodo* getSiguiente();
 	void setDatos(T* dato);
@@ -24,10 +25,31 @@ public:
 	unsigned int pop();
 };
 
+
+
+
 template <class T>
 Nodo<T>::Nodo() {
 	datos = nullptr;
 	siguiente = nullptr;
+}
+
+template<class T>
+Nodo<T>* Nodo<T>::reverse(Nodo* list)
+{
+	
+		Nodo* ptr = list;
+
+		if (list->getSiguiente() != nullptr)
+		{
+			ptr = reverse(list->getSiguiente());
+
+			(list->getSiguiente())->setSiguiente(list);
+			list->setSiguiente(nullptr);
+		}
+
+		return ptr;
+	
 }
 
 template <class T>
@@ -49,8 +71,18 @@ template<class T>
 inline string Nodo<T>::print()
 {
 	stringstream ss;
-	while(!datos->isEmpty())
-		ss << this->datos->pop();
+	unsigned int x=0;
+
+	
+
+	T* aux = new T();
+	T* stack = this->datos;
+	aux = stack->invertirPila(stack);
+	
+	while (!aux->isEmpty()) {
+		x =aux->pop();
+		ss << x;
+	}
 	return ss.str();
 
 }
