@@ -42,18 +42,10 @@ public:
 	//Metodos
 	void agregar(string numero);
 	Integer* suma(Integer*, Integer*);
-	Integer* resta(Lista<stack>* lista1, Lista<stack>* lista2);
-	string SumaStack(stack* s);
-	string SumarNodo(Nodo<stack>* s);
+	Integer* resta(Integer*, Integer*);
 	string NodotoString(Nodo<stack>* s);
-	string sumaStack(Nodo<stack>* s, Nodo<stack>* s1);
-	string restaStack(Nodo<stack>* s, Nodo<stack>* s1);
-	string multiStack(Nodo<stack>* s, Nodo<stack>* s1);
+	Integer* multiplicacion(Integer*, Integer*);
 
-	string CorteString(string s1, string s2, string n);
-
-	
-	Integer* multiplicacion(Integer* , Integer* s);
 
 	// Sobrecarga operadores asignacion
 	Integer& operator=(Integer&);

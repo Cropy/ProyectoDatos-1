@@ -53,9 +53,9 @@ int main() {
 
 	/*Integer* g= i1->multiplicacion(i1->getLista(), i2->getLista());*/
 
-   //cout << *g << endl;
+   //cout << *g << endl
 
-
+;
 
 
 
