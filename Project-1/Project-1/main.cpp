@@ -1,4 +1,4 @@
-
+#pragma once
 
 
 #include "Integer.h"
@@ -18,8 +18,8 @@ int main() {
 
 	
 
-	i1->agregar("12456444536456346try");
-	cout << *i1 << endl;
+	i1->agregar("12456444536456346");
+	
 
 
 

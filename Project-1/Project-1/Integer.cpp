@@ -75,7 +75,7 @@ void Integer::agregar(string numero) {
 		bandera = true;
 	}
 
-	this->setTam(numero.size());
+	this->setTam((int)numero.size());
 
 	for (int i = 0; i < numero.size(); i += TamVec) {
 		if (vector == nullptr) {
@@ -168,12 +168,12 @@ Integer& Integer:: operator =(Integer& x)
 }
 
 
-Integer& Integer::operator+=(Integer& x)
-{
-	//if (this == &x) {
-		return x = *suma(this, &x);
-	//}
-}
+//Integer& Integer::operator+=(Integer& x)
+//{
+//	//if (this == &x) {
+//		return x = *suma(this, &x);
+//	//}
+//}
 
 //Integer& Integer::operator-=(Integer& x)
 //{
@@ -183,12 +183,12 @@ Integer& Integer::operator+=(Integer& x)
 
 
 // Sobrecarga operadores aritmeticos
-Integer& Integer::operator+(Integer& inte)
-{
-	//this->suma(this->getLista(), inte.getLista()) + inte.suma(inte.);
-	return *this->suma(this, &inte);
-	//return *this;
-}
+//Integer& Integer::operator+(Integer& inte)
+//{
+//	////this->suma(this->getLista(), inte.getLista()) + inte.suma(inte.);
+//	//return *this->suma(this, &inte);
+//	////return *this;
+//}
 
 //Integer& Integer::operator-(Integer& inte)
 //{
