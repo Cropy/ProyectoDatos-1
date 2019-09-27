@@ -1,14 +1,12 @@
 // Lista.h
 // Autores: Jeoffrey Prado, Lorenzo Solorzano, Christian Cruz
-// Descripcion: Lista Integer, permite trabajar con datos string, int y long
+// Descripcion: Clase Lista
 
 #ifndef LISTA_H
 #define LISTA_H
 
-#include <iostream>
-#include <sstream>
 #include "Nodo.h"
-using namespace std;
+#include <sstream>
 
 template <class T>
 class Lista {
@@ -17,16 +15,15 @@ private:
 	int tamano;
 public:
 	Lista();
+	~Lista();
 	int getTamano();
+	void setTamano(int num);
 	Nodo<T>* getInicio();
 	void agregar(T*);
-	//void eliminar(T*);
 	T* buscar(T*);
 	void eliminarLista();
-	string Print();
-	~Lista();
+	string toString();
 };
-
 
 template <class T>
 Lista<T>::Lista() {
@@ -34,8 +31,13 @@ Lista<T>::Lista() {
 	inicio = nullptr;
 }
 
+template <class T>
+Lista<T>::~Lista() {
+	eliminarLista();
+}
+
 template<class T>
-inline int Lista<T>::getTamano()
+int Lista<T>::getTamano()
 {
 	Nodo<T>* tmp = inicio;
 	while (tmp != nullptr) {
@@ -46,7 +48,12 @@ inline int Lista<T>::getTamano()
 }
 
 template<class T>
-inline Nodo<T>* Lista<T>::getInicio()
+void Lista<T>::setTamano(int num) {
+	this->tamano = num;
+}
+
+template<class T>
+ Nodo<T>* Lista<T>::getInicio()
 {
 	return this->inicio;
 }
@@ -56,8 +63,7 @@ void Lista<T>::agregar(T* dato) {
 	Nodo<T>* nuevo = new Nodo<T>();
 	nuevo->setDatos(dato);
 	nuevo->setSiguiente(nullptr);
-	if (inicio == nullptr) {
-		
+	if (inicio == nullptr) {		
 		inicio = nuevo;
 		tamano++;
 	}
@@ -67,31 +73,6 @@ void Lista<T>::agregar(T* dato) {
 		tamano++;
 	}
 }
-
-//template <class T>
-//void Lista<T>::eliminar(T* dato) {
-//	if (inicio != nullptr) {
-//		throw 1;
-//	}
-//	Nodo<T> auxiliar;
-//	auxiliar = inicio;
-//	if (*inicio->getDatos() == *dato) {
-//		inicio = inicio->getSiguiente();
-//		delete auxiliar;
-//	}
-//	else {
-//		Nodo<T>* auxiliar2;
-//		auxiliar2 = auxiliar->getSiguiente();
-//		while (auxiliar2 != nullptr) {
-//			auxiliar->setSiguiente(auxiliar2->getSiguiente());
-//			delete auxiliar2;
-//			break;
-//		}
-//		auxiliar = auxiliar2;
-//		auxiliar2->setSiguiente(auxiliar2->getSiguiente());
-//	}
-//	delete auxiliar;
-//}
 
 template <class T>
 T* Lista<T>::buscar(T* dato) {
@@ -115,30 +96,20 @@ void Lista<T>::eliminarLista() {
 }
 
 template<class T>
-inline string Lista<T>::Print()
+string Lista<T>::toString()
 {
 	stringstream ss;
-	Nodo<T>* walk = inicio->reverse(inicio);
-	string x;
+	Nodo<T>* walk = inicio;
 	while (walk) 
 	{
-
-		x= walk->print();
-		ss << x;
+		ss << walk->toString() << endl;
 		walk = walk->getSiguiente();
 	}
 	return ss.str();
 }
 
-
-
-template <class T>
-Lista<T>::~Lista() {
-	eliminarLista();
-}
-
 template<class T>
-inline ostream& operator << (ostream& salida, Lista<T>& l) {
+ostream& operator << (ostream& salida, Lista<T>& l) {
 	salida << l.toString();
 	return salida;
 }

@@ -8,19 +8,12 @@
 #define ZERO 0
 #define ONE 1
 
-#include "Utiles.h"
 #include "Lista.h"
-#include "Stack.h"
-
-#include <iostream>
-#include <sstream>
-#include <math.h>
-using namespace std;
+#include "Vector.h"
 
 class Integer {
 private:
-	Lista<stack>* ListaStack;
-	char signo;
+	Lista<Vector>* ListaVector;
 	int tam;
 public:
 	// Constructores y Destructor

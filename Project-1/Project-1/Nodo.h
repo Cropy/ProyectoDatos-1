@@ -16,85 +16,35 @@ private:
 	Nodo<T>* siguiente;
 public:
 	Nodo();
-	Nodo* reverse(Nodo* list);
 	T* getDatos();
-	Nodo* getSiguiente();
+	Nodo<T>* getSiguiente();
 	void setDatos(T* dato);
-	string print();
-	void setSiguiente(Nodo* siguiente);
-	unsigned int pop();
+	void setSiguiente(Nodo<T>* sig);
 };
 
-
-
-
-template <class T>
+template<class T>
 Nodo<T>::Nodo() {
 	datos = nullptr;
 	siguiente = nullptr;
 }
 
 template<class T>
-Nodo<T>* Nodo<T>::reverse(Nodo* list)
-{
-	
-		Nodo* ptr = list;
-
-		if (list->getSiguiente() != nullptr)
-		{
-			ptr = reverse(list->getSiguiente());
-
-			(list->getSiguiente())->setSiguiente(list);
-			list->setSiguiente(nullptr);
-		}
-
-		return ptr;
-	
-}
-
-template <class T>
 T* Nodo<T>::getDatos() {
 	return datos;
 }
 
-template <class T>
+template<class T>
 Nodo<T>* Nodo<T>::getSiguiente() {
 	return siguiente;
 }
 
-template <class T>
+template<class T>
 void Nodo<T>::setDatos(T* dato) {
-	this->datos = dato;
+	this->datos = datos;
 }
 
 template<class T>
-inline string Nodo<T>::print()
-{
-	stringstream ss;
-	unsigned int x=0;
-
-	
-
-	T* aux = new T();
-	T* stack = this->datos;
-	aux = stack->invertirPila(stack);
-	
-	while (!aux->isEmpty()) {
-		x =aux->pop();
-		ss << x;
-	}
-	return ss.str();
-
-}
-
-template <class T>
-void Nodo<T>::setSiguiente(Nodo* siguiente) {
-	this->siguiente = siguiente;
-}
-
-template<class T>
-inline unsigned int Nodo<T>::pop()
-{
-	return this->datos->pop();
+void Nodo<T>::setSiguiente(Nodo<T>* sig) {
+	this->siguiente = sig;
 }
 #endif NODO_H
