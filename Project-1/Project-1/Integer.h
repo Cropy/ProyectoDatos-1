@@ -14,12 +14,14 @@
 
 #include <iostream>
 #include <sstream>
+#include <math.h>
 using namespace std;
 
 class Integer {
 private:
 	Lista<stack>* ListaStack;
 	char signo;
+	int tam;
 public:
 	// Constructores y Destructor
 	Integer();
@@ -30,9 +32,12 @@ public:
 
 	// Sets y Gets
 	char get_signo();
+	int getam();
+	void setTam(int t);
 	void set_signo(char sig);
 	Lista<stack>* getLista();
 	void setLista(Lista<stack>* lista);
+
 
 	//Metodos
 	void agregar(string numero);
