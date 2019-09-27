@@ -7,6 +7,8 @@
 
 #define ZERO 0
 #define ONE 1
+#define TamVec 3
+
 
 #include "Lista.h"
 #include "Vector.h"
@@ -15,6 +17,7 @@ class Integer {
 private:
 	Lista<Vector>* ListaVector;
 	int tam;
+	char signo;
 public:
 	// Constructores y Destructor
 	Integer();
@@ -28,15 +31,15 @@ public:
 	int getam();
 	void setTam(int t);
 	void set_signo(char sig);
-	Lista<stack>* getLista();
-	void setLista(Lista<stack>* lista);
+	Lista<Vector>* getLista();
+	void setLista(Lista<Vector>* lista);
 
 
 	//Metodos
 	void agregar(string numero);
 	Integer* suma(Integer*, Integer*);
 	Integer* resta(Integer*, Integer*);
-	string NodotoString(Nodo<stack>* s);
+	string NodotoString(Nodo<Vector>* s);
 	Integer* multiplicacion(Integer*, Integer*);
 
 

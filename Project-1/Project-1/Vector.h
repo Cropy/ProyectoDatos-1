@@ -14,6 +14,7 @@ using namespace std;
 
 class Vector {
 private:
+	
 	unsigned int vector[SIZE];
 	int cantidad;
 public:

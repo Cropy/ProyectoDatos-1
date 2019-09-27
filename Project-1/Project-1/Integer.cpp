@@ -1,10 +1,10 @@
 #include "Integer.h"
-#include<vector>
+#include"Vector.h"
 
 // Constructores y Destructor
 Integer::Integer()
 {
-	ListaStack = new Lista<stack>();
+	ListaVector = new Lista<Vector>();
 	signo = ' ';
 	tam = 0;
 }
@@ -46,21 +46,21 @@ void Integer::set_signo(char sig)
 	signo = sig;
 }
 
-Lista<stack>* Integer::getLista()
+Lista<Vector>* Integer::getLista()
 {
-	return this->ListaStack;
+	return this->ListaVector;
 }
 
-void Integer::setLista(Lista<stack>* lista)
+void Integer::setLista(Lista<Vector>* lista)
 {
-	this->ListaStack = lista;
+	this->ListaVector = lista;
 }
 
 // Metodos
 void Integer::agregar(string numero) {
 	int n = 3;
 	
-	stack* pila = nullptr;
+	Vector* vector = nullptr;
 	string auxiliar;
 	bool bandera = false;
 	if (!bandera) {
@@ -76,160 +76,83 @@ void Integer::agregar(string numero) {
 	}
 
 	this->setTam(numero.size());
-	for (int i = 0; i < numero.size(); i += n) {
-		if (pila == nullptr) {
-			pila = new stack();
+
+	for (int i = 0; i < numero.size(); i += TamVec) {
+		if (vector == nullptr) {
+			vector = new Vector();
 		}
-		if (numero.size() - i < n && pila->isEmpty()) {
+		if (numero.size() - i < n && vector->getCantidad()==0) {
 			auxiliar = numero.substr(i, numero.size() - i);
-			pila->push(stoul(auxiliar));
-			ListaStack->agregar(pila);
+			vector->insertar(stoul(auxiliar));
+			ListaVector->agregar(vector);
 			return;
 		}
-		if (!pila->isFull()) {
+		if (!vector->getCantidad()==3) {
 
 			if (numero.size() - i <= n) {
 				auxiliar = numero.substr(i, numero.size() - i);
-				pila->push(stoul(auxiliar));
-				ListaStack->agregar(pila);
+				vector->insertar(stoul(auxiliar));
+				ListaVector->agregar(vector);
 				return;
 
 			}
 			else {
 				auxiliar = numero.substr(i, n);
-				pila->push(stoul(auxiliar));
+				vector->insertar(stoul(auxiliar));
 			}
-			cout << "Agregando a pila " << endl;
+			cout << "Agregando a  vector " << endl;
 		}
 		
-		if(pila->isFull())
+		if(vector->getCantidad()==3)
 		{
 			cout << "Agregando a  nodo a Lista" << endl;
 
-			ListaStack->agregar(pila);
-			pila = nullptr;
+			ListaVector->agregar(vector);
+			vector = nullptr;
 		}
 	}
 
 }
 
-Integer* Integer::suma(Integer* i1, Integer* i2)
-{
-
-	
-	
-}
-
-
-	Integer* Integer::resta(Integer* i1, Integer* i2) {
-		
-}
+//Integer* Integer::suma(Integer* i1, Integer* i2)
+//{
+//
+//	
+//	
+//}
 
 
-
-
-
-
-string Integer::NodotoString(Nodo<stack>* n)
-{
-	
-}
+//	Integer* Integer::resta(Integer* i1, Integer* i2) {
+//		
+//}
 
 
 
 
 
 
-
-
-Integer* Integer::multiplicacion(Integer* Int1, Integer* Int2)
-{
-
-	
-
-	Nodo<stack>* nodo1;
-	Nodo<stack>* nodo2;
-
-	Integer* tmp1 = new Integer();
-    Integer* tmp2 = new Integer();
-	
-	string   aux1="";
-	string   aux2="";
-	 
-	unsigned int num1 = 0;
-	unsigned int num2 = 0;
-
-
-	vector<int> result(Int1->getam()+Int2->getam(), 0);
-	int i_n1 = 0;
-	int i_n2 = 0;
-
-
-	nodo1 = Int1->getLista()->getInicio();
-	nodo2 = Int2->getLista()->getInicio();
-
-	
-	nodo1 = Int1->getLista()->getInicio();
-	while (nodo1 != nullptr) {
-
-		
-		aux1 = NodotoString(nodo1);
-		for (int i = 0; i < aux1.length(); i++) {
-			unsigned int num1 = (unsigned int) aux1[i] - '0'; /* stoul(NodotoString(nodo1));*/
-			int carry = 0;
-			i_n2 = 0;
-			nodo2 = Int2->getLista()->getInicio();
-			while (nodo2 != nullptr) {
-
-
-				string g = NodotoString(nodo2);
-				for (int j = 0; j < g.length(); j++)
-				{
-					unsigned int num2 = (unsigned int)g[j] - '0';
-					unsigned int multi = 0;
-
-					multi = num1 * num2 + result[i_n1+i_n2]+carry;
-					carry = multi / 10;
-
-
-					result[i_n1 +i_n2] = multi % 10;
-					string s = std::to_string(multi); // recortar desde n-1 hasta tam;
-
-					i_n2++;
-					s = s + aux2; 
-					aux2 = s;
-				}
-				if (carry > 0) 
-					result[i_n1+i_n2] += carry;
-				i_n1++;
-				nodo2 = nodo2->getSiguiente();
-
-			}
-
-
-			tmp2->agregar(aux2);
-			tmp1 = suma(tmp1, tmp2); // SUMA MALA
-			aux2 = "";
-
-		}
-		nodo1 = nodo1->getSiguiente();
-	}
-	/*if (Int1->get_signo() == '+' && Int2->get_signo() == '+')
-		tmp1->set_signo('+');
-	if (Int1->get_signo() == '-' && Int2->get_signo() == '+')
-		tmp1->set_signo('-');
-	if (Int1->get_signo() == '+' && Int2->get_signo() == '-')
-		tmp1->set_signo('-');
-	if (Int1->get_signo() == '-' && Int2->get_signo() == '-')
-		tmp1->set_signo('+');*/
+//string Integer::NodotoString(Nodo<Vector>* n)
+//{
+//	
+//}
 
 
 
-	return tmp1;
 
-	
 
-}
+
+
+
+//Integer* Integer::multiplicacion(Integer* Int1, Integer* Int2)
+//{
+//
+//	
+//
+//	
+//
+//	
+//
+//}
 
 //// Sobrecarga operadores asignacion
 
@@ -237,7 +160,7 @@ Integer& Integer:: operator =(Integer& x)
 {
 	if (this != &x) {
 		if (x.getLista() != nullptr)
-			this->setLista(x.ListaStack);
+			this->setLista(x.ListaVector);
 		if (x.get_signo() != '\0')
 			this->set_signo(x.signo);
 	}
@@ -252,10 +175,10 @@ Integer& Integer::operator+=(Integer& x)
 	//}
 }
 
-Integer& Integer::operator-=(Integer& x)
-{
-	return x = *resta(this->getLista(), x.getLista());
-}
+//Integer& Integer::operator-=(Integer& x)
+//{
+//	return x = *resta(this->getLista(), x.getLista());
+//}
 
 
 
@@ -267,10 +190,10 @@ Integer& Integer::operator+(Integer& inte)
 	//return *this;
 }
 
-Integer& Integer::operator-(Integer& inte)
-{
-	return *this->resta(this->getLista(), inte.getLista());
-}
+//Integer& Integer::operator-(Integer& inte)
+//{
+//	return *this->resta(this->getLista(), inte.getLista());
+//}
 
 //Integer& Integer::operator*(Integer&)
 //{
@@ -329,7 +252,7 @@ ostream& operator<<(ostream& o, Integer& obj)
 string Integer::toString()
 {
 	stringstream ss;
-	ss << ListaStack->Print();
+	ss << ListaVector->toString() << endl;
 	return ss.str();
 }
 

@@ -20,7 +20,15 @@ public:
 	Nodo<T>* getSiguiente();
 	void setDatos(T* dato);
 	void setSiguiente(Nodo<T>* sig);
+	string toString();
 };
+
+template<class T>
+string Nodo<T>::toString() {
+	
+	return datos->toString();
+}
+
 
 template<class T>
 Nodo<T>::Nodo() {
