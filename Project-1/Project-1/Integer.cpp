@@ -116,198 +116,31 @@ void Integer::agregar(string numero) {
 Integer* Integer::suma(Integer* i1, Integer* i2)
 {
 
-	Integer* resultado = new Integer();
-		string sumaS; // va concatenado valores 
-		bool bandera = false;// evitar al if en la linea 102
-		stack* stack1 = nullptr; // guarda el stack de la lista 1;
-		stack* stack2 = nullptr; // guarda el stack de la lista 2;
-
-		unsigned int n1 = 0; //convirtes 
-		unsigned int n2 = 0;
-		unsigned int resul = 0;
 	
-		
-
-		Nodo<stack>* nodo1 = i1->getLista()->getInicio(); // guarda el nodo de la lista1 para recorrer
-		Nodo<stack>* nodo2 = i2->getLista()->getInicio(); // guarda el nodo de la lista2 para recorrer
-
-		
-
-		
-		
-
-		return resultado;
 	
 }
 
 
-	Integer* Integer::resta(Lista<stack> * lista1, Lista<stack> * lista2) {
-		Integer* resultado = new Integer(); // valor a retonar
-
-		string restaR; // va concatenado valores 
-		bool bandera = false;// evitar al if en la linea 102
-		stack* stack1 = nullptr; // guarda el stack de la lista 1;
-		stack* stack2 = nullptr; // guarda el stack de la lista 2;
-
-		unsigned int n1 = 0; //convirtes 
-		unsigned int n2 = 0;
-		unsigned int resul = 0;
-
-		Nodo<stack>* nodo1 = new Nodo<stack>(); // guarda el nodo de la lista1 para recorrer
-		Nodo<stack>* nodo2 = new Nodo<stack>(); // guarda el nodo de la lista2 para recorrer
-
-		//if (lista1->getTamano() != 0 && lista2->getTamano() == 0) // si la lista1 tiene elementos y la lista2 = 0
-		//{
-		//	nodo1 = lista1->getInicio();
-		//	while (nodo1 != nullptr)
-		//	{
-		//		restaR += NodotoString(nodo1);
-		//		nodo1 = nodo1->getSiguiente();
-		//	}
-		//	bandera = true;
-
-		//}
-
-		//if (lista1->getTamano() == 0 && lista2->getTamano() != 0) // si la lista2 tiene elementos y la lista1 = 0
-		//{
-
-		//	nodo2 = lista2->getInicio();
-		//	while (nodo2 != nullptr)
-		//	{
-		//		restaR += NodotoString(nodo2);
-		//		nodo2 = nodo1->getSiguiente();
-		//	}
-		//	bandera = true;
-
-
-	//}
-
-		if (!bandera) { // si NO ENTRO  a los metodos anteriores
-			nodo1 = lista1->getInicio();
-			nodo2 = lista2->getInicio();
-		while (nodo1 != nullptr && nodo2 != nullptr) // en el momento que una lista sea mas larga que la otra para
-		{
-			restaR += restaStack(nodo1, nodo2);
-			nodo1 = nodo1->getSiguiente();
-			nodo2 = nodo2->getSiguiente();
-		}
-
-
-	}
-
-	if (nodo1 != nullptr && nodo2 == nullptr) // si lista es  mas larga que lista 2, continua con la lista 1
-	{
-		while (nodo1 != nullptr)
-		{
-			n1 = stoul(SumarNodo(nodo1));
-			restaR += std::to_string(n1);
-			nodo1 = nodo1->getSiguiente();
-
-		}
-	}
-
-	if (nodo2 != nullptr && nodo1 == nullptr) // si lista es  mas larga que lista 2, continua con la lista 2
-	{
-		while (nodo2 != nullptr)
-		{
-			n2 = stoul(SumarNodo(nodo2));
-			restaR += std::to_string(n2);
-			nodo2 = nodo1->getSiguiente();
-
-		}
-	}
-
-	resultado->agregar(restaR); //agrega el String a la lista del la variable a retonar
-	return resultado;
+	Integer* Integer::resta(Integer* i1, Integer* i2) {
+		
 }
 
 
-string Integer::SumaStack(stack* s)  // concatena los numeros de unStack en un String
-{
-	unsigned int suma = 0;
-	string resultado="";
-	stack* aux = s->invertirPila(s);
-	while (!aux->isEmpty()) {
-		resultado += std::to_string(aux->pop());
-	}
 
 
-	return resultado;
-}
 
-string Integer::SumarNodo(Nodo<stack>* s)
-{
-	
-
-	return SumaStack(s->getDatos());
-
-}
 
 string Integer::NodotoString(Nodo<stack>* n)
 {
-	stack* s =n->getDatos();
-	stack* aux = new stack();
-	aux = s->invertirPila(s);
-	string resultado;
-	while (!aux->isEmpty()) {
-		resultado += std::to_string(aux->pop());
-	}
-
-
-
-
-	return resultado;
-}
-
-string Integer::sumaStack(Nodo<stack>* s1, Nodo<stack>* s2)
-{
-	stack* stack1 = s1->getDatos();
-	stack* stack2 = s2->getDatos();
-	unsigned int sum = 0;
-	string resul;
-	while (!stack1->isEmpty() && !stack2->isEmpty()) {
 	
-		sum = stack1->pop() + stack2->pop();	resul += std::to_string(sum);
-	}
-	return resul;
-}
-
-string Integer::restaStack(Nodo<stack>* s1, Nodo<stack>* s2) {
-	stack* stack1 = s1->getDatos();
-	stack* stack2 = s2->getDatos();
-	unsigned int res = 0;
-	string resul;
-	
-	while(!stack1->isEmpty() && !stack2->isEmpty()) {
-		res = stack1->pop() - stack2->pop();
-		resul += std::to_string(res);
-	}
-	
-	return resul;
 }
 
 
 
-//string Integer::multiStack(Nodo<stack>* s1, Nodo<stack>* s2)
-//{
-//	stack* stack1 = s1->getDatos();
-//	stack* stack2 = s2->getDatos();
-//	unsigned int multi = 0;
-//	string resul;
-//	string cantSumas= StacktoString(stack2);
-//	string sumando = StacktoString(stack1);
-//
-//	int i = 0;
-//
-//	while (i < stoul(cantSumas)) {
-//		
-//		multi += stoul(sumando);
-//		i++;
-//	}
-//
-//	return std::to_string(multi);
-//	
-//}
+
+
+
+
 
 Integer* Integer::multiplicacion(Integer* Int1, Integer* Int2)
 {
