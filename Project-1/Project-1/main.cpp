@@ -18,14 +18,17 @@ int main() {
 
 	
 
-	i1->agregar("12456444536456346");
+	i1->agregar("9999");
+	i2->agregar("9999");
+
+	i3 = i1->suma(i2);
 	
 
 
 
 	//i3 = i1->suma(i1, i2);
 	///*i3 = i1->multiplicacion(i2, i1);*/
-	cout << i1->toString() << endl;
+	cout << i3->toString() << endl;
 
 	
 

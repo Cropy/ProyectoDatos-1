@@ -84,7 +84,7 @@ void Integer::agregar(string numero) {
 		if (numero.size() - i < n && vector->getCantidad()==0) {
 			auxiliar = numero.substr(i, numero.size() - i);
 			vector->insertar(stoul(auxiliar));
-			ListaVector->agregar(vector);
+			this->getLista()->agregar(vector);
 			return;
 		}
 		if (vector->getCantidad()!=3) {
@@ -92,7 +92,7 @@ void Integer::agregar(string numero) {
 			if (numero.size() - i <= n) {
 				auxiliar = numero.substr(i, numero.size() - i);
 				vector->insertar(stoul(auxiliar));
-				ListaVector->agregar(vector);
+				this->getLista()->agregar(vector);
 				return;
 
 			}
@@ -107,26 +107,25 @@ void Integer::agregar(string numero) {
 		{
 			cout << "Agregando a  nodo a Lista" << endl;
 
-			ListaVector->agregar(vector);
+			this->getLista()->agregar(vector);
 			vector = nullptr;
 		}
 	}
 
 
-	cout << this->getLista()->toString();
+	
 }
 
 Integer* Integer::suma(Integer* i2)
 {
 
-
 	Integer* temp = new Integer();
 	bool carry = 0;
-	int x = 0, c = 0;
+	unsigned int x = 0, c = 0;
 	Nodo<Vector> *tempA = (this->getLista())->getInicio();
 	Nodo<Vector>* tempB = (i2->getLista())->getInicio();
 	while (tempA || tempB) {
-		short* result = new short[3];
+		Vector* result = new Vector();
 		for (int i = 0; i < 3; i++) {
 			unsigned int a = 0, b = 0;
 			if (tempA) {
@@ -140,7 +139,8 @@ Integer* Integer::suma(Integer* i2)
 			x = a + b + c;
 			c = x / 10000;
 			x = x % 10000;
-			result[i] = x;
+
+			result->insertar(x);
 			if (c == 0) {
 				carry = false;
 			}
@@ -148,26 +148,27 @@ Integer* Integer::suma(Integer* i2)
 				carry = true;
 			}
 		}
-		temp->big_int->insertarElemento(result); // lista
+		temp->getLista()->agregar(result); // lista
 		if (tempA) {
-			tempA = tempA->GetNext(); // getSiguiente
+			tempA = tempA->getSiguiente(); // getSiguiente
 		}
 		if (tempB) {
-			tempB = tempB->GetNext();
+			tempB = tempB->getSiguiente();
 		}
 	}
 	int look;
 	if (carry) {
-		short p = (short)c;
+	unsigned int p = c;
+	
 		short* pp = new short[3];
 		pp[0] = p;
 		p = 0;
 		pp[1] = p;
 		pp[2] = p;
-		temp->big_int->insertarElemento(pp);
+		/*temp->getLista()->agregar(pp);*/
 	}
 	std::string ss = "[" + temp->toString() + "]";
-	temp->reLengh();
+	//temp->reLengh();
 	return temp;
 }
 
@@ -302,7 +303,7 @@ ostream& operator<<(ostream& o, Integer& obj)
 string Integer::toString()
 {
 	stringstream ss;
-	ss << ListaVector->toString() << endl;
+	ss << ListaVector->toString();
 	return ss.str();
 }
 

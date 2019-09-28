@@ -1,10 +1,14 @@
 #include "Vector.h"
 
-Vector::Vector(){
+
+
+Vector::Vector()
+{
 	cantidad = 0;
-	
+
 	for (int i = 0; i < SIZE; i++)
-		vector[i] = NULL;
+		vector[i] = 0;
+
 }
 
 Vector::~Vector() {
@@ -27,8 +31,8 @@ unsigned int Vector::getNumero(int i) {
 
 string Vector::toString() {
 	stringstream ss;
-	for (int i = 0; i < SIZE; i++) {
-		ss << vector[i] << endl;
+	for (int i = 0; i < cantidad; i++) {
+		ss << getNumero(i);
 	}
 	return ss.str();
 }

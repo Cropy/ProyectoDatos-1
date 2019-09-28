@@ -28,7 +28,7 @@ public:
 template <class T>
 Lista<T>::Lista() {
 	tamano = 0;
-	inicio = nullptr;
+	inicio = new Nodo<T>;
 }
 
 template <class T>
@@ -61,18 +61,28 @@ template<class T>
 template <class T>
 void Lista<T>::agregar(T* dato) {
 	Nodo<T>* nuevo = new Nodo<T>();
+	Nodo<T>* tmp= new Nodo<T>();;
 	nuevo->setDatos(dato);
 	nuevo->setSiguiente(nullptr);
+
 	if (inicio == nullptr) {		
 		inicio = nuevo;
 		tamano++;
 	}
-	else {
-		nuevo->setSiguiente(inicio);
-		inicio = nuevo;
-		tamano++;
+	
+
+	else 
+	{
+		 tmp = inicio;
+		while (tmp->getSiguiente() != NULL)
+			tmp = tmp->getSiguiente();
 	}
+	tmp->setSiguiente(nuevo);
+	 
+
 }
+
+
 
 template <class T>
 T* Lista<T>::buscar(T* dato) {
@@ -102,7 +112,7 @@ string Lista<T>::toString()
 	Nodo<T>* walk = inicio;
 	while (walk) 
 	{
-		ss << walk->getDatos()->toString() << endl;
+		ss <<  walk->getDatos()->toString();
 		walk = walk->getSiguiente();
 	}
 	return ss.str();

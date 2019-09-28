@@ -48,7 +48,7 @@ Nodo<T>* Nodo<T>::getSiguiente() {
 
 template<class T>
 void Nodo<T>::setDatos(T* dato) {
-	this->datos = datos;
+	this->datos = dato;
 }
 
 template<class T>
