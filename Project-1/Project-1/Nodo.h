@@ -32,7 +32,7 @@ string Nodo<T>::toString() {
 
 template<class T>
 Nodo<T>::Nodo() {
-	datos = nullptr;
+	datos = new T();
 	siguiente = nullptr;
 }
 

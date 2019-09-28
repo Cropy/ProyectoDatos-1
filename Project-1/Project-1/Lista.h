@@ -102,7 +102,7 @@ string Lista<T>::toString()
 	Nodo<T>* walk = inicio;
 	while (walk) 
 	{
-		ss << walk->toString() << endl;
+		ss << walk->getDatos()->toString() << endl;
 		walk = walk->getSiguiente();
 	}
 	return ss.str();

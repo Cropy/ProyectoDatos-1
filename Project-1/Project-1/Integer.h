@@ -37,7 +37,7 @@ public:
 
 	//Metodos
 	void agregar(string numero);
-	Integer* suma(Integer*, Integer*);
+	Integer* suma( Integer*);
 	Integer* resta(Integer*, Integer*);
 	string NodotoString(Nodo<Vector>* s);
 	Integer* multiplicacion(Integer*, Integer*);

@@ -87,7 +87,7 @@ void Integer::agregar(string numero) {
 			ListaVector->agregar(vector);
 			return;
 		}
-		if (!vector->getCantidad()==3) {
+		if (vector->getCantidad()!=3) {
 
 			if (numero.size() - i <= n) {
 				auxiliar = numero.substr(i, numero.size() - i);
@@ -112,14 +112,64 @@ void Integer::agregar(string numero) {
 		}
 	}
 
+
+	cout << this->getLista()->toString();
 }
 
-//Integer* Integer::suma(Integer* i1, Integer* i2)
-//{
-//
-//	
-//	
-//}
+Integer* Integer::suma(Integer* i2)
+{
+
+
+	Integer* temp = new Integer();
+	bool carry = 0;
+	int x = 0, c = 0;
+	Nodo<Vector> *tempA = (this->getLista())->getInicio();
+	Nodo<Vector>* tempB = (i2->getLista())->getInicio();
+	while (tempA || tempB) {
+		short* result = new short[3];
+		for (int i = 0; i < 3; i++) {
+			unsigned int a = 0, b = 0;
+			if (tempA) {
+
+				a = tempA->getDatos()->getNumero(i);
+			}
+			if (tempB) {
+				b = tempB->getDatos()->getNumero(i);
+
+			}
+			x = a + b + c;
+			c = x / 10000;
+			x = x % 10000;
+			result[i] = x;
+			if (c == 0) {
+				carry = false;
+			}
+			else {
+				carry = true;
+			}
+		}
+		temp->big_int->insertarElemento(result); // lista
+		if (tempA) {
+			tempA = tempA->GetNext(); // getSiguiente
+		}
+		if (tempB) {
+			tempB = tempB->GetNext();
+		}
+	}
+	int look;
+	if (carry) {
+		short p = (short)c;
+		short* pp = new short[3];
+		pp[0] = p;
+		p = 0;
+		pp[1] = p;
+		pp[2] = p;
+		temp->big_int->insertarElemento(pp);
+	}
+	std::string ss = "[" + temp->toString() + "]";
+	temp->reLengh();
+	return temp;
+}
 
 
 //	Integer* Integer::resta(Integer* i1, Integer* i2) {

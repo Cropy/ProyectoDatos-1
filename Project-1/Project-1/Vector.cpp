@@ -1,9 +1,10 @@
 #include "Vector.h"
 
-Vector::Vector() {
+Vector::Vector(){
 	cantidad = 0;
+	
 	for (int i = 0; i < SIZE; i++)
-		vector[i] = 0;
+		vector[i] = NULL;
 }
 
 Vector::~Vector() {

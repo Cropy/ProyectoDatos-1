@@ -25,7 +25,7 @@ int main() {
 
 	//i3 = i1->suma(i1, i2);
 	///*i3 = i1->multiplicacion(i2, i1);*/
-	//cout << i3->toString() << endl;
+	cout << i1->toString() << endl;
 
 	
 
