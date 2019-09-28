@@ -82,8 +82,6 @@ void Lista<T>::agregar(T* dato) {
 
 }
 
-
-
 template <class T>
 T* Lista<T>::buscar(T* dato) {
 	Nodo<T>* auxilio = inicio;

@@ -22,7 +22,6 @@ int main() {
 	i2->agregar("9999");
 
 	i3 = i1->suma(i2);
-	
 
 
 

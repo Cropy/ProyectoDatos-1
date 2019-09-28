@@ -25,10 +25,8 @@ public:
 
 template<class T>
 string Nodo<T>::toString() {
-	
 	return datos->toString();
 }
-
 
 template<class T>
 Nodo<T>::Nodo() {

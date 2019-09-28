@@ -1,5 +1,4 @@
 #include "Integer.h"
-#include"Vector.h"
 
 // Constructores y Destructor
 Integer::Integer()
@@ -9,20 +8,9 @@ Integer::Integer()
 	tam = 0;
 }
 
-Integer::Integer(const Integer&)
-{
-}
-
-Integer::Integer(const long long&)
-{
-}
-
-Integer::Integer(const string&)
-{
-}
-
 Integer::~Integer()
 {
+	delete ListaVector;
 }
 
 // Sets y Gets
@@ -59,7 +47,6 @@ void Integer::setLista(Lista<Vector>* lista)
 // Metodos
 void Integer::agregar(string numero) {
 	int n = 3;
-	
 	Vector* vector = nullptr;
 	string auxiliar;
 	bool bandera = false;
@@ -74,20 +61,18 @@ void Integer::agregar(string numero) {
 		}
 		bandera = true;
 	}
-
 	this->setTam((int)numero.size());
-
 	for (int i = 0; i < numero.size(); i += TamVec) {
 		if (vector == nullptr) {
 			vector = new Vector();
 		}
-		if (numero.size() - i < n && vector->getCantidad()==0) {
+		if (numero.size() - i < n && vector->getCantidad() == 0) {
 			auxiliar = numero.substr(i, numero.size() - i);
 			vector->insertar(stoul(auxiliar));
 			this->getLista()->agregar(vector);
 			return;
 		}
-		if (vector->getCantidad()!=3) {
+		if (vector->getCantidad() != 3) {
 
 			if (numero.size() - i <= n) {
 				auxiliar = numero.substr(i, numero.size() - i);
@@ -103,7 +88,7 @@ void Integer::agregar(string numero) {
 			cout << "Agregando a  vector " << endl;
 		}
 		
-		if(vector->getCantidad()==3)
+		if(vector->getCantidad() == 3)
 		{
 			cout << "Agregando a  nodo a Lista" << endl;
 
@@ -111,14 +96,10 @@ void Integer::agregar(string numero) {
 			vector = nullptr;
 		}
 	}
-
-
-	
 }
 
 Integer* Integer::suma(Integer* i2)
 {
-
 	Integer* temp = new Integer();
 	bool carry = 0;
 	unsigned int x = 0, c = 0;
@@ -172,42 +153,24 @@ Integer* Integer::suma(Integer* i2)
 	return temp;
 }
 
+Integer* Integer::division(Integer* int1, Integer* int2)
+{
+	return nullptr;
+}
 
-//	Integer* Integer::resta(Integer* i1, Integer* i2) {
-//		
-//}
+Integer* Integer::resta(Integer* i1, Integer* i2) 
+{
+		
+}
 
-
-
-
-
-
-//string Integer::NodotoString(Nodo<Vector>* n)
-//{
-//	
-//}
+Integer* Integer::multiplicacion(Integer* int1, Integer* int2)
+{
 
 
+}
 
-
-
-
-
-
-//Integer* Integer::multiplicacion(Integer* Int1, Integer* Int2)
-//{
-//
-//	
-//
-//	
-//
-//	
-//
-//}
-
-//// Sobrecarga operadores asignacion
-
-Integer& Integer:: operator =(Integer& x)
+// Sobrecarga operadores asignacion
+Integer& Integer::operator=(Integer& x)
 {
 	if (this != &x) {
 		if (x.getLista() != nullptr)
@@ -218,20 +181,26 @@ Integer& Integer:: operator =(Integer& x)
 	return *this;
 }
 
-
+//Integer& Integer::operator*=(Integer&)
+//{
+//}
+//
 //Integer& Integer::operator+=(Integer& x)
 //{
 //	//if (this == &x) {
 //		return x = *suma(this, &x);
 //	//}
 //}
-
+//
 //Integer& Integer::operator-=(Integer& x)
 //{
 //	return x = *resta(this->getLista(), x.getLista());
 //}
-
-
+//
+//Integer& Integer::operator/=(Integer& x)
+//{
+//
+//}
 
 // Sobrecarga operadores aritmeticos
 //Integer& Integer::operator+(Integer& inte)
@@ -255,51 +224,51 @@ Integer& Integer:: operator =(Integer& x)
 //{
 //	// TODO: insertar una instrucción return aquí
 //}
-//
-//bool Integer::operator<(Integer&)
-//{
-//	return false;
-//}
-//
-//bool Integer::operator>(Integer&)
-//{
-//	return false;
-//}
-//
-//bool Integer::operator<=(Integer&)
-//{
-//	return false;
-//}
-//
-//bool Integer::operator>=(Integer&)
-//{
-//	return false;
-//}
-//
-//bool Integer::operator==(Integer&)
-//{
-//	return false;
-//}
-//
-//bool Integer::operator!=(Integer&)
-//{
-//	return false;
-//}
 
-
-//// Sobrecarga operadores E/S
-istream& operator>>(istream& o, Integer& obj)
+// Sobrecarga operadores comparacion
+bool Integer::operator<(Integer&)
 {
-	return o;
+	return false;
 }
 
+bool Integer::operator>(Integer&)
+{
+	return false;
+}
+
+bool Integer::operator<=(Integer& x)
+{
+	return (this->getam() < x.getam() || *this == x);
+}
+
+bool Integer::operator>=(Integer& x)
+{
+	return (this->getam() > x.getam() || *this == x);
+}
+
+bool Integer::operator==(Integer& x)
+{
+	if (this->get_signo() == x.get_signo()) {
+		ListaVector->getInicio();
+	}
+	else
+		return false;
+	return true;
+}
+
+bool Integer::operator!=(Integer& x)
+{
+	return !(*this == x);
+}
+
+// Sobrecarga operadores E/S
 ostream& operator<<(ostream& o, Integer& obj)
 {
 	o << obj.toString();
 	return o;
 }
 
-//// Extras
+// Extras
 string Integer::toString()
 {
 	stringstream ss;
@@ -307,9 +276,7 @@ string Integer::toString()
 	return ss.str();
 }
 
-Integer Integer::parse(string hilera)
-{
-	return Integer();
-}
-
-
+//Integer Integer::parse(string hilera)
+//{
+//
+//}
