@@ -18,24 +18,30 @@
     <ClInclude Include="Integer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Utiles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Lista.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Nodo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Utiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Integer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="Stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

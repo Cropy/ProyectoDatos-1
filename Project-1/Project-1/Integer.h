@@ -7,62 +7,111 @@
 
 #define ZERO 0
 #define ONE 1
-#define TamVec 3
 
+#include "Utiles.h"
 #include "Lista.h"
-#include "Vector.h"
+#include"Stack.h"
+
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
 
 class Integer {
 private:
-	Lista<Vector>* ListaVector;
-	int tam;
+	Lista<stack>* ListaStack;
 	char signo;
 public:
 	// Constructores y Destructor
-	Integer();
+	Integer() {
+		ListaStack = new Lista<stack>();
+		signo = ' ';
+	}
+	Integer(const Integer&);
+	Integer(const long long&);
+	Integer(const string&);
 	~Integer();
 
 	// Sets y Gets
+	string get_numero();
 	char get_signo();
-	int getam();
-	void setTam(int t);
-	void set_signo(char sig);
-	Lista<Vector>* getLista();
-	void setLista(Lista<Vector>* lista);
+	void set_numero(string);
+	void set_signo(char);
+	Lista<stack>* getLista();
+	void setLista(Lista<stack>* lista);
 
 	//Metodos
 	void agregar(string numero);
-	Integer* suma( Integer*);
-	Integer* resta(Integer*, Integer*);
-	Integer* multiplicacion(Integer*, Integer*);
-	Integer* division(Integer*, Integer*);
+	Integer* suma(Lista<stack>* lista1, Lista<stack>* lista2);
+	string StacktoString(stack* s);
+	string NodotoString(Nodo<stack>* s);
+	string sumaStack(Nodo<stack>* s, Nodo<stack>* s1);
+	Integer* suma(Lista<stack>* lista1, Lista<stack>* lista2);
+
+
 
 	// Sobrecarga operadores asignacion
-	Integer& operator=(Integer&);
-	//Integer& operator+=(Integer&);
-	//Integer& operator-=(Integer&);
-	//Integer& operator*=(Integer&);
-	//Integer& operator/=(Integer&);
+	Integer& operator =(const Integer&);
+	Integer& operator+=(const Integer&);
+	Integer& operator-=(const Integer&);
+	Integer& operator*=(const Integer&);
+	Integer& operator/=(const Integer&);
+	Integer& operator =(const long long&);
+	Integer& operator+=(const long long&);
+	Integer& operator-=(const long long&);
+	Integer& operator*=(const long long&);
+	Integer& operator/=(const long long&);
+	Integer& operator =(const string&);
+	Integer& operator+=(const string&);
+	Integer& operator-=(const string&);
+	Integer& operator*=(const string&);
+	Integer& operator/=(const string&);
 
 	// Sobrecarga operadores aritmeticos
-	//Integer& operator+(Integer&);
-	//Integer& operator-(Integer&);
-	//Integer& operator*(Integer&);
-	//Integer& operator/(Integer&);
+	Integer& operator+( Integer&) ;
+	Integer operator-(const Integer&) const;
+	Integer operator*(const Integer&) const;
+	Integer operator/(const Integer&) const;
+	Integer operator+(const long long&) const;
+	Integer operator-(const long long&) const;
+	Integer operator*(const long long&) const;
+	Integer operator/(const long long&) const;
+	Integer operator+(const string&) const;
+	Integer operator-(const string&) const;
+	Integer operator*(const string&) const;
+	Integer operator/(const string&) const;
 
 	// Sobrecarga operadores comparacion
-	bool operator<(Integer&);
-	bool operator>(Integer&);
-	bool operator<=(Integer&);
-	bool operator>=(Integer&);
-	bool operator==(Integer&);
-	bool operator!=(Integer&);
+	bool operator<(const Integer&) const;
+	bool operator>(const Integer&) const;
+	bool operator<=(const Integer&) const;
+	bool operator>=(const Integer&) const;
+	bool operator==(const Integer&) const;
+	bool operator!=(const Integer&) const;
+	bool operator<(const long long&) const;
+	bool operator>(const long long&) const;
+	bool operator<=(const long long&) const;
+	bool operator>=(const long long&) const;
+	bool operator==(const long long&) const;
+	bool operator!=(const long long&) const;
+	bool operator<(const string&) const;
+	bool operator>(const string&) const;
+	bool operator<=(const string&) const;
+	bool operator>=(const string&) const;
+	bool operator==(const string&) const;
+	bool operator!=(const string&) const;
 
 	// Sobrecarga operadores E/S
-	friend ostream& operator<<(ostream&, Integer&);
+	friend istream& operator>>(istream&, Integer&);
+	friend ostream& operator<<(ostream&, const Integer&);
 
 	// Extras
 	string toString();
-	//Integer parse(string hilera);
+	Integer parse(string);
+	/*string to_string() const;
+	int to_int() const;
+	long to_long() const;
+	long long to_long_long() const;*/
 };
 #endif // !INTEGER_H

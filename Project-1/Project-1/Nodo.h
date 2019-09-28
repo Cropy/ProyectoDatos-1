@@ -1,13 +1,13 @@
-// Nodo.h
-// Autores: Jeoffrey Prado, Christian Cruz, Lorenzo Solorzano
-// Descripcion: Clase Nodo, utilizado en la lista enlazada
-
+#pragma once
 #ifndef NODO_H
 #define NODO_H
 
 #include <iostream>
 #include <sstream>
+
 using namespace std;
+
+template <class T> class Nodo;
 
 template <class T>
 class Nodo {
@@ -17,40 +17,51 @@ private:
 public:
 	Nodo();
 	T* getDatos();
-	Nodo<T>* getSiguiente();
+	Nodo* getSiguiente();
 	void setDatos(T* dato);
-	void setSiguiente(Nodo<T>* sig);
-	string toString();
+	void print();
+	void setSiguiente(Nodo* siguiente);
+	unsigned int pop();
 };
 
-template<class T>
-string Nodo<T>::toString() {
-	return datos->toString();
-}
-
-template<class T>
+template <class T>
 Nodo<T>::Nodo() {
-	datos = new T();
+	datos = nullptr;
 	siguiente = nullptr;
 }
 
-template<class T>
+template <class T>
 T* Nodo<T>::getDatos() {
 	return datos;
 }
 
-template<class T>
+template <class T>
 Nodo<T>* Nodo<T>::getSiguiente() {
 	return siguiente;
 }
 
-template<class T>
+template <class T>
 void Nodo<T>::setDatos(T* dato) {
 	this->datos = dato;
 }
 
 template<class T>
-void Nodo<T>::setSiguiente(Nodo<T>* sig) {
-	this->siguiente = sig;
+inline void Nodo<T>::print()
+{
+	cout << this->datos->peek() << endl;;
+
 }
+
+template <class T>
+void Nodo<T>::setSiguiente(Nodo* siguiente) {
+	this->siguiente = siguiente;
+}
+
+template<class T>
+inline unsigned int Nodo<T>::pop()
+{
+	return this->datos->pop();
+}
+
+
 #endif NODO_H
